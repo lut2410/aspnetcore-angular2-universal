@@ -3,19 +3,21 @@
   "project": {
     "name": "AspnetCore-Angular-Universal"
   },
-  "apps": [
-    {
-      "root": "ClientApp"
-    }
-  ],
+  "apps": [{
+    "root": "ClientApp",
+    "styles": [
+        "styles.scss"
+      ]
+
+  }
+],
   "defaults": {
     "styleExt": "scss",
     "component": {
       "spec": false
     }
   },
-  "lint":[
-    {
+  "lint": [{
       "project": "ClientApp/tsconfig.app.json"
     },
     {

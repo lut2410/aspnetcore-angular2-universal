@@ -1,0 +1,21 @@
+﻿@import 'environments';
+
+$mobile-vertical-breakpoint: 280px;
+$mobile-horizontal-breakpoint: 480px;
+$tablet-vertical-breakpoint: 768px;
+$tablet-horizontal-breakpoint: 992px;
+$desktop-breakpoint: 1200px;
+$desktop-extra-breakpoint: 1290px;
+
+$isJobsCentral: $projectSource == 'jobscentral';
+$isTalentCorp: $projectSource == 'talentcorp';
+
+$globalBackgroundColor: #fff;
+
+@if $isJobsCentral {
+  $globalBackgroundColor: #e15535;
+}
+
+@if $isTalentCorp {
+  $globalBackgroundColor: #f5f5f5;
+}
