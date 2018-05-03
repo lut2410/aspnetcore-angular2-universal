@@ -15,7 +15,6 @@
     "build:vendor": "webpack --config webpack.config.vendor.js --progress --color",
     "clean": "rimraf wwwroot/dist clientapp/dist",
     "build:client-and-server-bundles": "ng build --prod --output-hashing=false"
-
   },
   "dependencies": {
     "@angular/animations": "^5.0.0",

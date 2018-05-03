@@ -6,13 +6,15 @@
   "apps": [
     {
       "root": "ClientApp",
+      "outDir": "server-dist",
       "assets": [
         "assets",
         "favicon.ico"
       ],
-      "index": "index.html",
       "main": "boot.server.ts",
-      "name": "project-name"
+      "styles": [
+        "styles.scss"
+      ]
     }
   ],
   "defaults": {
