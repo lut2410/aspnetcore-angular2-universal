@@ -5,7 +5,10 @@
   },
   "apps": [
     {
-      "root": "ClientApp"
+      "root": "ClientApp",
+      "styles": [
+        "styles.css"
+      ]
     }
   ],
   "defaults": {
