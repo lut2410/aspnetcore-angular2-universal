@@ -4,7 +4,7 @@ import { CommonModule, APP_BASE_HREF } from '@angular/common';
 import { HttpModule, Http } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 
-import { Ng2BootstrapModule } from 'ngx-bootstrap';
+import { BsDropdownModule } from 'ngx-bootstrap';
 
 // i18n support
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -51,7 +51,7 @@ export function createTranslateLoader(http: Http, baseHref) {
         CommonModule,
         HttpModule,
         FormsModule,
-        Ng2BootstrapModule.forRoot(), // You could also split this up if you don't want the Entire Module imported
+        BsDropdownModule.forRoot(), // You could also split this up if you don't want the Entire Module imported
 
         TransferHttpModule, // Our Http TransferData method
 
