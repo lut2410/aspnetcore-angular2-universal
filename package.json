@@ -8,12 +8,14 @@
     "test:ci": "npm run test -- --browsers PhantomJS_custom",
     "test:ci:watch": "npm run test:ci -- --auto-watch --no-single-run",
     "test:coverage": "npm run test -- --coverage",
-    "build:dev": "npm run build:vendor && npm run build:webpack",
+    "build:dev": "npm run build:client-and-server-bundles && npm run build:vendor && npm run build:webpack",
     "build:webpack": "webpack --progress --color",
     "build:prod": "npm run clean && npm run build:vendor -- --env.prod && npm run build:webpack -- --env.prod",
     "build:p": "npm run build:webpack -- --env.prod",
     "build:vendor": "webpack --config webpack.config.vendor.js --progress --color",
-    "clean": "rimraf wwwroot/dist clientapp/dist"
+    "clean": "rimraf wwwroot/dist clientapp/dist",
+    "build:client-and-server-bundles": "ng build --prod --output-hashing=false"
+
   },
   "dependencies": {
     "@angular/animations": "^5.0.0",

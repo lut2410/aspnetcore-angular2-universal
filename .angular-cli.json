@@ -5,7 +5,14 @@
   },
   "apps": [
     {
-      "root": "ClientApp"
+      "root": "ClientApp",
+      "assets": [
+        "assets",
+        "favicon.ico"
+      ],
+      "index": "index.html",
+      "main": "boot.server.ts",
+      "name": "project-name"
     }
   ],
   "defaults": {
@@ -14,7 +21,7 @@
       "spec": false
     }
   },
-  "lint":[
+  "lint": [
     {
       "project": "ClientApp/tsconfig.app.json"
     },
