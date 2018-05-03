@@ -6,10 +6,11 @@
     "test:watch": "npm run test -- --watch",
     "test:ci": "npm run test -- --runInBand",
     "test:coverage": "npm run test -- --coverage",
-    "build:dev": "npm run build:vendor && npm run build:webpack",
+    "build:dev": " npm run build:client-and-server-bundles && npm run build:vendor && npm run build:webpack",
     "build:webpack": "webpack --progress --color",
     "build:prod": "npm run build:vendor -- --env.prod && npm run build:dev -- --env.prod",
-    "build:vendor": "webpack --config webpack.config.vendor.js --progress --color"
+    "build:vendor": "webpack --config webpack.config.vendor.js --progress --color",
+    "build:client-and-server-bundles": "ng build --prod && ng build --prod --app 1 --output-hashing=false"
   },
   "jest": {
     "preset": "jest-preset-angular",

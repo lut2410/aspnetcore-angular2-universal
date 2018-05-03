@@ -5,13 +5,17 @@
   },
   "apps": [
     {
-      "root": "ClientApp"
+      "root": "ClientApp",
+      "outDir": "dist",
+      "main": "main.ts",
+      "styles": [
+        "styles.scss"
+      ]
     }
   ],
   "defaults": {
     "styleExt": "scss",
     "component": {
-      "spec": false
     }
   }
 }
