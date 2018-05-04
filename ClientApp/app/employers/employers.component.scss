@@ -1,0 +1,166 @@
+﻿// //@import 'variables';
+
+// $bg-img-url: '';
+
+// @if $isJobsCentral {
+//   $bg-img-url: '../../assets/images/businessman_employers.jpg';
+// }
+
+// @if $isTalentCorp {
+//   $bg-img-url: '../../assets/images/employers/talentcorp_company_desktop.jpg';
+// }
+
+// .employers-container {
+//   background: url($bg-img-url) center center no-repeat;
+//   background-size: cover;
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   height: 100vh;
+//   width: 100%;
+//   color: white;
+//   text-align: center;
+//   display: table;
+
+//   &__content {
+//     margin-top: 15%;
+//   }
+
+//   a {
+//     color: white;
+//     text-decoration: underline;
+//   }
+
+//   .employers-site-btn a {
+//     border: solid 1px #f25622;
+//     padding: 15px;
+//     text-decoration: none;
+//     border-radius: 5px;
+//     background-color: #f25622;
+//     font-size: 20px;
+//   }
+// }
+
+// @media (min-width: $mobile-vertical-breakpoint) {
+//   .employers-container {
+//     &__content {
+//       margin-top: 45%;
+//     }
+
+//     &__welcome-text {
+//       font-size: 30px;
+//       line-height: 36px;
+//       margin-bottom: 30px;
+//     }
+
+//     &__text {
+//       font-size: 16px;
+//       line-height: 24px;
+//       margin-bottom: 30px;
+//     }
+
+//     &__text-last {
+//       font-size: 16px;
+//       line-height: 24px;
+//     }
+
+//     .employers-site-btn a {
+//       font-size: 14px;
+//     }
+//   }
+// }
+
+// @media (min-width: $mobile-horizontal-breakpoint) {
+//   .employers-container {
+//     &__content {
+//       margin-top: 15%;
+//     }
+//   }
+// }
+
+// @media (min-width: $tablet-vertical-breakpoint) {
+//   .employers-container {
+//     &__content {
+//       margin-top: 35%;
+//     }
+
+//     &__welcome-text {
+//       font-size: 54px;
+//       line-height: 70px;
+//       margin-bottom: 40px;
+//     }
+
+//     &__text {
+//       font-size: 22px;
+//       line-height: 34px;
+//       margin-bottom: 40px;
+//     }
+
+//     &__text-last {
+//       font-size: 22px;
+//       line-height: 34px;
+//     }
+
+//     .employers-site-btn a {
+//       font-size: 20px;
+//     }
+//   }
+// }
+
+// @media (min-width: $tablet-horizontal-breakpoint) {
+//   .employers-container {
+//     &__content {
+//       margin-top: 15%;
+//     }
+
+//     &__welcome-text {
+//       font-size: 54px;
+//       line-height: 60px;
+//       margin-bottom: 40px;
+//     }
+
+//     &__text {
+//       font-size: 22px;
+//       line-height: 34px;
+//       margin-bottom: 40px;
+//     }
+
+//     &__text-last {
+//       font-size: 22px;
+//       line-height: 34px;
+//     }
+
+//     .employers-site-btn a {
+//       font-size: 20px;
+//     }
+//   }
+// }
+
+// @media (min-width: $desktop-breakpoint) {
+//   .employers-container {
+//     &__content {
+//       margin-top: 15%;
+//     }
+
+//     &__welcome-text {
+//       font-size: 54px;
+//       line-height: 70px;
+//       margin-bottom: 40px;
+//     }
+
+//     &__text {
+//       font-size: 22px;
+//       line-height: 34px;
+//       margin-bottom: 40px;
+//     }
+
+//     &__text-last {
+//       font-size: 22px;
+//       line-height: 34px;
+//     }
+
+//     .employers-site-btn a {
+//       font-size: 20px;
+//     }
+//   }
+// }

@@ -1,0 +1,87 @@
+﻿<div class="footer-background" id="footer" *ngIf="isJobsCentral">
+  <div class="container">
+    <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12 footer-overide-padding pull-right">
+      <div class="col-lg-3 col-md-4 col-sm-4 footer-ipad-left hidden-xs pull-right">
+        <div class="footer-logo" [ngStyle]="{'background-image': 'url('+ companyFooterLogo + ')'}"></div>
+      </div>
+      <div class="col-lg-8 col-md-offset-0 col-md-8 col-sm-offset-4 col-sm-8 col-xs-12 footer-item">
+        <span class="footer-follow-us">{{ "GENERAL.FOLLOW_US" | translate }}</span>
+        <a href="{{_socialNetworkLinks.facebookLink}}" class="footer-item__common-icon footer-item__common-icon--fb" target="_blank" *ngIf="_socialNetworkLinks.facebookLink"></a>
+        <a href="{{_socialNetworkLinks.twitterLink}}" class="footer-item__common-icon footer-item__common-icon--tw" target="_blank" *ngIf="_socialNetworkLinks.twitterLink"></a>
+        <a href="{{_socialNetworkLinks.linkedinLink}}" class="footer-item__common-icon footer-item__common-icon--in" target="_blank" *ngIf="_socialNetworkLinks.linkedinLink"></a>
+        <a href="{{_socialNetworkLinks.instagramLink}}" class="footer-item__common-icon footer-item__common-icon--itg" target="_blank" *ngIf="_socialNetworkLinks.instagramLink"></a>
+      </div>
+    </div>
+    <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 pull-right">
+      <div class="footer-menu">
+        <div class="row">
+          <div class="col-md-3 col-sm-4 hidden-xs">
+            <a routerLink="home">{{ "GENERAL.HOME" | translate }}</a>
+          </div>
+          <div class="col-md-7 col-sm-8 hidden-xs">
+            <a routerLink="jobs">{{ "GENERAL.NAVIGATE_JOBS" | translate }}</a>
+          </div>
+          <div class="col-md-3 col-sm-3 footer-menu__hidden">
+            <a routerLink="jobs">{{ "MENU.FOR_JOBSEEKERS" | translate }}</a>
+          </div>
+          <div class="col-md-3 col-sm-3 footer-menu__hidden">
+            <a routerLink="jobs">{{ "MENU.FOR_EMPLOYERS" | translate }}</a>
+          </div>
+        </div>
+        <div class="row footer-menu__blog">
+          <div class="col-md-3 col-sm-3 footer-menu__hidden">
+            <a href="#">{{ "GENERAL.BLOG" | translate }}</a>
+          </div>
+          <div class="col-md-3 col-sm-3 footer-menu__hidden">
+            <a href="#">{{ "GENERAL.TEAM" | translate }}</a>
+          </div>
+          <div class="col-md-3 col-sm-3 footer-menu__hidden">
+            <a href="#">{{ "GENERAL.ARTICLES" | translate }}</a>
+          </div>
+          <div class="col-md-3 col-sm-3 footer-menu__hidden">
+            <a href="#">{{ "MENU.MALAYSIA_100" | translate }}</a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3 col-sm-3 footer-menu__hidden">
+            <a href="#">{{ "GENERAL.ABOUT_US" | translate }}</a>
+          </div>
+          <div class="col-md-3 col-sm-3 footer-menu__hidden">
+            <a href="#">{{ "GENERAL.CONTACT_US" | translate }}</a>
+          </div>
+          <div class="col-md-3 col-sm-3 footer-menu__hidden">
+            <a href="#">{{ "GENERAL.EVENTS" | translate }}</a>
+          </div>
+        </div>
+      </div>
+      <div class="wrapper-coppy-right">
+        <p class="footer-copy-right">&#169;&nbsp;{{ currentDate | date:'yyyy' }} {{_companyName}} {{ "GENERAL.COPYRIGHT_CONTENT" | translate }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="hidden-xs footer-background" *ngIf="isTalentCorp">
+  <div class="container footer-background__info-wrapper">
+    <div class="row talentcorp-footer__info">
+      <div class="col-xs-12 col-sm-5 col-md-6 col-lg-6 talentcorp-footer-logo"></div>
+      <div class="col-xs-12 col-sm-offset-2 col-sm-5 col-md-4 col-md-offset-2 col-lg-3 col-lg-offset-3 footer-item">
+        <a href="{{_socialNetworkLinks.contactLink}}" class="footer-item__common-icon--mail"></a>
+        <a href="{{_socialNetworkLinks.linkedinLink}}" class="footer-item__common-icon--in"></a>
+        <a href="{{_socialNetworkLinks.youtubeLink}}" class="footer-item__common-icon--youtube"></a>
+        <a href="{{_socialNetworkLinks.twitterLink}}" class="footer-item__common-icon--tw"></a>
+        <a href="{{_socialNetworkLinks.facebookLink}}" class="footer-item__common-icon--fb"></a>
+        <a href="{{_socialNetworkLinks.instagramLink}}" class="footer-item__common-icon--itg"></a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-background__copyright-wrapper">
+    <div class="container talentcorp-footer__copyright">
+      <p>
+        {{"GENERAL-TALENTCORP.COPYRIGHT_LABEL" | translate }} {{ "GENERAL-TALENTCORP.COPYRIGHT_YEAR" | translate }}
+        {{_companyName}} {{ "GENERAL-TALENTCORP.COPYRIGHT_CONTENT" | translate }}
+        <a class="copyright-privacy" href="https://www.talentcorp.com.my/about-us/privacy-policy">{{ "GENERAL-TALENTCORP.PRIVACY_POLICY" | translate }}</a> |
+        <a class="copyright-terms-conditions" href="https://www.talentcorp.com.my/about-us/terms-conditions">{{ "GENERAL-TALENTCORP.TERMS_CONDITIONS" | translate }}</a>
+      </p>
+    </div>
+  </div>
+</div>

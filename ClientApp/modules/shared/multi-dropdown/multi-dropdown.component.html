@@ -1,0 +1,14 @@
+<div class="btn-group dropdown">
+    <button data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" type="button" class="dropdown-toggle" id="jobDropDownList"
+        [ngClass]="settings.buttonClasses" (click)="toggleDropdown()">{{ title }}&nbsp;<span class="caret"></span></button>
+    <ul aria-labelledby="jobDropDownList" class="dropdown-menu overide-dropdown-menu jobOptions"
+        [style.max-height]="settings.maxHeight" style="height: auto; overflow-y: auto;">
+        <li *ngFor="let option of options | multiSelectSearchFilter:searchFilterText">
+            <a href="javascript:;" role="menuitem" tabindex="-1" (click)="setSelected($event, option)">
+                <span class="check-box" *ngIf="settings.checkedStyle == 'checkboxes'" [ngClass]="{'check-box__active': isSelected(option), 'check-box__deactive':!isSelected(option)}"></span>
+                <span *ngIf="settings.checkedStyle == 'glyphicon'" style="width: 16px;" class="glyphicon" [class.glyphicon-ok]="isSelected(option)"></span>
+                {{ option.name }}
+            </a>
+        </li>
+    </ul>
+</div>

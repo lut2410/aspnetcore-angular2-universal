@@ -1,0 +1,173 @@
+<div class="dropdown" [class.hide-result]="!showResultField" [class.open]="isOpenCate">
+    <div data-toggle="dropdown" [ngClass]="{'category-filter__select-dropdown':screen == 'jobSearch',
+                    'category-filter__select-dropdown--joblist': screen == 'jobList'}" *ngIf="showResultField">
+        <div class="input-field">
+            <span *ngIf="selectedCategories?.length == 0" class="category-filter__default-text">{{ "JOB.ALL_JOB_CATEGORIES" | translate }}</span>
+            <span
+                class="caret"></span>
+                <span *ngIf="selectedCategories?.length >= 1 && firstSelectedCategoryName" [ngClass]="addCategoryItemStyle()" title="{{firstSelectedCategoryName}}">{{firstSelectedCategoryName}}
+            </span>
+                <span *ngIf="selectedCategories?.length > 1" title="{{selectedCategories.length}}" [ngClass]="{'category-filter__notitfy-text': screen == 'jobSearch',
+                  'category-filter__notitfy-text--joblist': screen == 'jobList'}">...+{{selectedCategories.length - 1}}more</span>
+        </div>
+    </div>
+
+    <!-- Destop and Tablet -->
+    <div class="category-filter__dropdown-box jobs">
+        <div class="category-filter__container">
+            <div class="category-filter__content dropdown-menu jobs" (click)="preventClosing($event)">
+                <div class="category-filter__content-container">
+                    <div class="selected-category-panel col-xs-12">
+                        <div class="selected-category-list-panel">
+                            <ul class="category-filter__selected-list">
+                                <li class="select2-selection__choice" *ngFor="let selectedItem of selectedCategoryItems" title="{{selectedItem.name}}">
+                                    {{selectedItem.name}}
+                                    <span class="select2-selection__choice__remove" (click)=removeItem(selectedItem) role="presentation">&#x2716;</span>
+                                </li>
+                                <li class="clear-selection__option" *ngIf="selectedCategories?.length > 0" title="Clear Selections" (click)="clearSelectedList()">
+                                    Clear Selections
+                                </li>
+                            </ul>
+                            <br style="clear: both">
+                        </div>
+                    </div>
+                    <div class="category-list">
+                        <div *ngFor="let item of listItem; let i = index">
+                            <div class="panel-heading">
+                                <a class="category-list__option-heading" (click)="selectItem($event, i)" data-parent="#accordion" href="javascript:;">
+                                    <i class="indicator glyphicon pull-left" [ngClass]="getExtendingClass(i)" aria-hidden="true" data-toggle="collapse" data-parent="#accordion"></i>
+                                    <span class="accordion-toggle">
+                                        {{item.name}}
+                                    </span>
+                                    <span class="badge total-jobs-maincategory pull-right">{{item.count}}</span>
+                                </a>
+                            </div>
+                            <div id="{{i}}-category-{{device}}" class="category-list__option-body" [hidden]="!expandList[i]">
+                                <div>
+                                    <div class="category-list__option-content">
+                                        <label>
+                                                <span class="category-list__option-content--check-box"  [ngClass]="{'active': item?.selected, 'deactive':!item?.selected}"></span>
+                                                <input type="checkbox" value="{{item.name}}" (change)="toggleCategoryCheckbox(item, $event, i)" (click)="$event.stopPropagation();" [ngModel]="item?.selected"/>
+                                                All {{item.name}} jobs
+                                            </label>
+                                        <span class="badge total-jobs-subcategory pull-right">{{item.count}}</span>
+                                    </div>
+                                    <div class="category-list__option-content" *ngFor="let childitem of item.items; let childId = index;">
+                                        <label>
+                                            <span class="category-list__option-content--check-box" [ngClass]="{'active': childitem?.selected, 'deactive':!childitem?.selected}"></span>
+                                            <input type="checkbox" value="{{childitem.name}}"  (change)="toggleCategoryCheckbox(childitem, $event, i)" (click)="$event.stopPropagation();"  [ngModel]="childitem?.selected"/>
+                                            {{childitem.name}}
+                                        </label>
+                                        <span class="badge total-jobs-subcategory pull-right">{{childitem.count}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile only -->
+    <div aria-hidden="true" class="category-mobile-view">
+        <!-- Mobile only does not show result field -->
+        <div class="clear" *ngIf="selectedCategories?.length > 0 && isJobsPage" title="Clear Selections" (click)="clearSelectedList()">Clear</div>
+        <div *ngIf="!showResultField">
+            <div class="category-list jobs-category-filter">
+                <div *ngFor="let item of listItem; let i = index">
+                    <div class="panel-heading">
+                        <a class="category-list__option-heading" (click)="selectItem($event, i)" data-parent="#accordion" href="javascript:;">
+                            <i class="indicator glyphicon pull-left" [ngClass]="getExtendingClass(i)" aria-hidden="true" data-toggle="collapse" data-parent="#accordion"></i>
+                            <span class="accordion-toggle">
+                                {{item.name}}
+                            </span>
+                            <span class="badge total-jobs-maincategory pull-right">{{item.count}}</span>
+                        </a>
+                    </div>
+                    <div id="{{i}}-category-{{device}}" class="category-list__option-body" [hidden]="!expandList[i]">
+                        <div>
+                            <div class="category-list__option-content">
+                                <label>
+                                    <span class="category-list__option-content--check-box" [ngClass]="{'active': item?.selected, 'deactive':!item?.selected}"></span>
+                                    <input type="checkbox" value="{{item.name}}" (change)="toggleCategoryCheckbox(item, $event, i)" [ngModel]="item?.selected" />
+                                    All {{item.name}} jobs
+                                </label>
+                                <span class="badge total-jobs-subcategory pull-right">{{item.count}}</span>
+                            </div>
+                            <div class="category-list__option-content" *ngFor="let childitem of item.items; let childId = index;">
+                                <label>
+                                    <span class="category-list__option-content--check-box" [ngClass]="{'active': childitem?.selected, 'deactive':!childitem?.selected}"></span>
+                                    <input type="checkbox" value="{{childitem.name}}" (change)="toggleCategoryCheckbox(childitem, $event, i)" [ngModel]="childitem?.selected" />
+                                    {{childitem.name}}
+                                </label>
+                                <span class="badge total-jobs-subcategory pull-right">{{childitem.count}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile only shows result field -->
+        <div *ngIf="showResultField">
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" *ngIf="isMobile">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="selected-category-panel col-xs-12">
+                            <div class="selected-category-list-panel">
+                                <ul class="category-filter__selected-list">
+                                    <li class="select2-selection__choice" *ngFor="let selectedItem of selectedCategoryItems" title="{{selectedItem.name}}">
+                                        {{selectedItem.name}}
+                                        <span class="select2-selection__choice__remove" (click)=removeItem(selectedItem) role="presentation">&#x2716;</span>
+                                    </li>
+                                    <li class="clear-selection__option" *ngIf="selectedCategories?.length > 0" title="Clear Selections" (click)="clearSelectedList()">
+                                        Clear Selections
+                                    </li>
+                                </ul>
+                                <br style="clear: both">
+                            </div>
+                            <div class="category-submit-button-col">
+                                <button type="button" class="category-submit-button" data-dismiss="modal" (click)="doneCategory($event)" (categorySelected)="categorySelected($event)">Done</button>
+                            </div>
+                        </div>
+                        <div class="category-list">
+                            <div *ngFor="let item of listItem; let i = index">
+                                <div class="panel-heading">
+                                    <a class="category-list__option-heading" (click)="selectItem($event, i)" data-toggle="collapse" data-parent="#accordion"
+                                        href="javascript:;">
+                                        <i class="indicator glyphicon pull-left" [ngClass]="getExtendingClass(i)" aria-hidden="true" data-toggle="collapse" data-parent="#accordion"></i>
+                                        <span class="accordion-toggle">
+                                            {{item.name}}
+                                        </span>
+                                        <span class="badge total-jobs-maincategory pull-right">{{item.count}}</span>
+                                    </a>
+                                </div>
+                                <div id="{{i}}-category-{{device}}" class="category-list__option-body" [hidden]="!expandList[i]">
+                                    <div>
+                                        <div class="category-list__option-content">
+                                            <label>
+                                                <span class="category-list__option-content--check-box" [ngClass]="{'active': item?.selected, 'deactive':!item?.selected}"></span>
+                                                <input type="checkbox" value="{{item.name}}" (change)="toggleCategoryCheckbox(item, $event, i)" [ngModel]="item?.selected" />
+                                                All {{item.name}} jobs
+                                            </label>
+                                            <span class="badge total-jobs-subcategory pull-right">{{item.count}}</span>
+                                        </div>
+                                        <div class="category-list__option-content" *ngFor="let childitem of item.items; let childId = index;">
+                                            <label>
+                                                <span  class="category-list__option-content--check-box" [ngClass]="{'active': childitem?.selected, 'deactive':!childitem?.selected}"></span>
+                                                <input type="checkbox" value="{{childitem.name}}" (change)="toggleCategoryCheckbox(childitem, $event, i)" [ngModel]="childitem?.selected" />
+                                                {{childitem.name}}
+                                            </label>
+                                            <span class="badge total-jobs-subcategory pull-right">{{childitem.count}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

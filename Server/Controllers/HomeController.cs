@@ -10,52 +10,85 @@ using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Http;
 using System.Diagnostics;
 using System;
+using System.IO;
+using System.Linq;
 using Asp2017.Server.Models;
-
+using System.Threading;
 namespace AspCoreServer.Controllers
 {
   public class HomeController : Controller
   {
     [HttpGet]
-    public async Task<IActionResult> Index()
-    {
-      var prerenderResult = await Request.BuildPrerender();
+        public async Task<IActionResult> Index()
+        {
+            var nodeServices = Request.HttpContext.RequestServices.GetRequiredService<INodeServices>();
+            var hostEnv = Request.HttpContext.RequestServices.GetRequiredService<IHostingEnvironment>();
+            var requestFeature = Request.HttpContext.Features.Get<IHttpRequestFeature>();
 
-      ViewData["SpaHtml"] = prerenderResult.Html; // our <app-root /> from Angular
-      ViewData["Title"] = prerenderResult.Globals["title"]; // set our <title> from Angular
-      ViewData["Styles"] = prerenderResult.Globals["styles"]; // put styles in the correct place
-      ViewData["Scripts"] = prerenderResult.Globals["scripts"]; // scripts (that were in our header)
-      ViewData["Meta"] = prerenderResult.Globals["meta"]; // set our <meta> SEO tags
-      ViewData["Links"] = prerenderResult.Globals["links"]; // set our <link rel="canonical"> etc SEO tags
-      ViewData["TransferData"] = prerenderResult.Globals["transferData"]; // our transfer data set to window.TRANSFER_CACHE = {};
+            var webRootPath = hostEnv.WebRootPath;
+            var unencodedPathAndQuery = requestFeature.RawTarget;
+            var unencodedAbsoluteUrl = $"{Request.Scheme}://{Request.Host}{unencodedPathAndQuery}";
+            var jsModuleFiles = Directory.GetFiles(Path.Combine(webRootPath, "server"), "main*.bundle.js");
+            var applicationStoppingToken = new CancellationToken(true);
+            var jsModule = new JavaScriptModuleExport(jsModuleFiles.LastOrDefault());
 
-      return View();
+            // ** TransferData concept **
+            // Here we can pass any Custom Data we want !
+
+            // By default we're passing down Cookies, Headers, Host from the Request object here
+            var transferData = new TransferData();
+            transferData.request = AbstractHttpContextRequestInfo(Request);
+            // Add more customData here, add it to the TransferData class
+
+            // Prerender / Serialize application (with Universal)
+            var prerenderResult = await Prerenderer.RenderToString(
+                "/",
+                nodeServices,
+                applicationStoppingToken,
+                jsModule,
+                unencodedAbsoluteUrl,
+                unencodedPathAndQuery,
+                transferData, // Our simplified Request object & any other CustommData you want to send!
+                TimeSpan.FromSeconds(10).Milliseconds,
+                Request.PathBase.ToString()
+            );
+
+            ViewData["SpaHtml"] = prerenderResult.Html; // our <app> from Angular
+            ViewData["Title"] = prerenderResult.Globals["title"]; // set our <title> from Angular
+            ViewData["Styles"] = prerenderResult.Globals["styles"]; // put styles in the correct place
+            ViewData["Meta"] = prerenderResult.Globals["meta"]; // set our <meta> SEO tags
+            ViewData["Links"] = prerenderResult.Globals["links"]; // set our <link rel="canonical"> etc SEO tags
+            ViewData["TransferData"] = prerenderResult.Globals["transferData"]; // our transfer data set to window.TRANSFER_CACHE = {};
+
+            return View();
+        }
+
+        private IRequest AbstractHttpContextRequestInfo(HttpRequest request)
+        {
+
+            IRequest requestSimplified = new IRequest();
+            requestSimplified.cookies = request.Cookies;
+            requestSimplified.headers = request.Headers;
+            requestSimplified.host = request.Host;
+
+            return requestSimplified;
+        }
+
     }
 
-    [HttpGet]
-    [Route("sitemap.xml")]
-    public async Task<IActionResult> SitemapXml()
+    public class IRequest
     {
-      String xml = "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
-
-      xml += "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">";
-      xml += "<url>";
-      xml += "<loc>http://localhost:4251/home</loc>";
-      xml += "<lastmod>" + DateTime.Now.ToString("yyyy-MM-dd") + "</lastmod>";
-      xml += "</url>";
-      xml += "<url>";
-      xml += "<loc>http://localhost:4251/counter</loc>";
-      xml += "<lastmod>" + DateTime.Now.ToString("yyyy-MM-dd") + "</lastmod>";
-      xml += "</url>";
-      xml += "</urlset>";
-
-      return Content(xml, "text/xml");
-
+        public object cookies { get; set; }
+        public object headers { get; set; }
+        public object host { get; set; }
     }
 
-    public IActionResult Error()
+    public class TransferData
     {
-      return View();
+        public dynamic request { get; set; }
+
+        // Your data here ?
+        public object thisCameFromDotNET { get; set; }
     }
-  }
+
 }

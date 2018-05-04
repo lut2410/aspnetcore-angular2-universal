@@ -1,0 +1,37 @@
+﻿<!-- Mobile only (not tablet verticle) -->
+<div class="favorite-job-list-wrapper">
+  <div class="hidden-xs hidden-sm">
+    <app-sub-menu *ngIf="isJobsCentral"></app-sub-menu>
+  </div>
+  <div class="container" *ngIf="!isLoadingFavoriteJobs">
+    <div class="joblist_total-jobs" *ngIf="totalJobs > 0">
+      <span class="joblist_total-jobs-number">{{totalJobs}}</span>
+      <span class="joblist_total-jobs-unit">{{ "JOB_SEARCH.FAVORITE_JOBS" | translate }}</span>
+    </div>
+    <div *ngIf="totalJobs <= 0">
+      <div class="joblist_total-nojob">
+        <div class="joblist_total-nojob-wrapper">
+          <div class="joblist_total-nojob-unit">
+            <img class="joblist_total-nojob-favorite-icon" src="../../../assets/icons/icon_favorite.jpg" />
+            <b>{{ "JOB_SEARCH.DESCRIPTION_FAVORITE_JOBS" | translate }}</b><br />{{ "JOB_SEARCH.NO_FAVORITE_JOBS" | translate }} <b>{{"JOB_SEARCH.NO_FAVORITE_JOBS_SAVE_AS_FAVORITE" | translate}}</b>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div id="job-list" class="joblist">
+      <!-- Desktop and tablet -->
+
+      <ul class="list-unstyled" *ngIf="totalJobs > 0">
+        <li *ngFor="let job of jobs">
+          <div class="joblist_item">
+            <app-job-list-item [job]="job" [isHavingLogo]="true" (navigate)="onNavigate($event)"></app-job-list-item>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</div>

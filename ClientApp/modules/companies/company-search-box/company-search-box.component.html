@@ -1,0 +1,19 @@
+<div class="search-company">
+    <div class="container">
+        <form (ngSubmit)="companySearch($event)">
+            <div class="search-company__search-fields row">
+                <div class="search-company__input-container col-sm-8 col-xs-11 col-md-9">
+                    <app-autocomplete (onSelected)="onSelected($event)" [param]="companyParam" [(ngModel)]="company.name" name="searchCompany">
+                    </app-autocomplete>
+                </div>
+
+                <div class="search-company__btn-search-container col-sm-4 col-xs-1 col-md-3">
+                    <button type="submit" class="search-company__button-search" id="search-job-btn-search">
+                        <span class="search-button-icon glyphicon glyphicon-search"></span>
+                        <span class="search-company__button-search--text">{{ "COMPANY.FIND_COMPANIES" | translate }}</span>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

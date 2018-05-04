@@ -1,0 +1,8 @@
+﻿<div class="home-search-job">
+    <div>
+        <div class="home-search-job__title">{{ findJobHeading }}</div>
+        <div class="home-search-job__search-job-container" id="search-job-in-home">
+            <app-job-search-box [currentPagePath]="currentPagePath" (onSearch)="onSearch($event)"></app-job-search-box>
+        </div>
+    </div>
+</div>

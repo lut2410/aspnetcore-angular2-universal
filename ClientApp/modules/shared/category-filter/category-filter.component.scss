@@ -1,0 +1,739 @@
+// @import "variables";
+
+// .category-filter {
+//     &__select-dropdown {
+//         height: 100%;
+//         background-color: #fff;
+//         border-radius: 3px;
+//         color: #777;
+//         text-align: left;
+//         font-size: 20px;
+//         line-height: normal;
+//         box-sizing: border-box;
+//     }
+
+//     &__default-text {
+//         display: inline-block;
+//         padding: 5px 15px;
+//         line-height: 50px;
+//     }
+
+//     &__selected-items-text {
+//         display: inline-block;
+//         padding: 0 15px;
+//         white-space: nowrap;
+//         width: 70%;
+//         overflow: hidden;
+//     }
+
+//     &__selected-items-text--only-one {
+//         display: inline-block;
+//         padding: 0 15px;
+//         white-space: nowrap;
+//         width: 100%;
+//         overflow: hidden;
+//     }
+
+//     &__selected-items-text--only-one:after {
+//         content: "";
+//         position: absolute;
+//         right: 0;
+//         height: 40px;
+//         width: 50px;
+//         background: linear-gradient(to right, transparent, white);
+//     }
+
+//     &__selected-items-text:after {
+//         content: "";
+//         position: absolute;
+//         right: 30%;
+//         height: 40px;
+//         width: 50px;
+//         background: linear-gradient(to right, transparent, white);
+//     }
+
+//     &__notitfy-text {
+//         display: inline-block;
+//         padding: 0 15px;
+//         height: 38px;
+//         position: absolute;
+//         background: linear-gradient(to left, transparent, white 70%);
+//         right: -7px;
+//     }
+
+
+//     &__dropdown-box {
+//         position: relative;
+//         float: left;
+
+//         .category-filter__content {
+//             padding: 0;
+//             z-index: 1;
+//             display: none;
+//             position: absolute;
+//             width: 500px;
+//         }
+
+//         .category-filter__content.dropdown-menu{
+//             border-radius: 0;
+//             height:auto;
+//         }
+//     }
+
+//     &__container {
+//     }
+
+//     &__selected-list {
+//         margin: 0px;
+//         width: 100%;
+//         display: inline-block;
+//         padding: 0px;
+//     }
+
+//     &__select-dropdown--joblist {
+//         height: 100%;
+//         background-color: #fff;
+//         border-radius: 3px;
+//         color: #777;
+//         text-align: left;
+//         font-size: 16px;
+//         box-sizing: border-box;
+
+//         :hover {
+//             cursor: pointer;
+//         }
+//     }
+
+//     &__selected-items-text--joblist {
+//         display: inline-block;
+//         line-height: 40px;
+//         padding: 0 15px;
+//         white-space: nowrap;
+//         width: 70%;
+//         overflow: hidden;
+//     }
+
+//     &__selected-items-text--only-one-joblist {
+//         display: inline-block;
+//         line-height: 40px;
+//         padding: 0 15px;
+//         white-space: nowrap;
+//         width: 100%;
+//         overflow: hidden;
+//     }
+
+//     &__selected-items-text--only-one-joblist:after {
+//         content: "";
+//         position: absolute;
+//         right: 1px;
+//         height: 31px;
+//         width: 50px;
+//         background: linear-gradient(to right, transparent, white);
+//     }
+
+//     &__selected-items-text--joblist:after {
+//         content: "";
+//         position: absolute;
+//         right: 72px;
+//         height: 30px;
+//         width: 50px;
+//         background: linear-gradient(to right, transparent, white);
+//     }
+
+//     &__notitfy-text--joblist {
+//         display: inline-block;
+//         line-height: 40px;
+//         padding: 0 15px;
+//         height: 38px;
+//         position: absolute;
+//         background: linear-gradient(to left, transparent, white 70%);
+//         right: -7px;
+//     }
+
+//     &__content {
+//         color: #fff;
+//         border: 1px solid #e4e4e4;
+//         box-shadow: 0px 3px 5px rgba(0,0,0, 0.15);
+//         list-style: none;
+//         height: auto;
+//         top: 12px;
+//         max-height: 510px;
+//         background-color: white;
+
+//         &::before {
+//             content: url(../../../assets/images/arrow_up.svg);
+//             width: 21px;
+//             height: 15px;
+//             position: absolute;
+//             bottom: 100%;
+//             left: 40px;
+//             border-color: #e4e4e4;
+//         }
+//     }
+// }
+// .category-list {
+//     text-align: left;
+//     overflow-x: hidden;
+//     background-color: #fff;
+//     padding: 0 10px;
+
+
+//     &-content {
+//         height: 9999px;
+//         overflow-y: scroll;
+//     }
+
+//     &__option-heading {
+//         min-height: 40px;
+//         color: #555;
+//         font-size: 16px;
+//         line-height: 40px;
+//         text-decoration: none;
+
+//         .glyphicon {
+//             font-size: 10px;
+//             line-height: 40px;
+//             padding: 0;
+//         }
+//     }
+
+//     &__option-content {
+//         min-height: 40px;
+//         color: #555;
+//         font-size: 16px;
+//         line-height: 40px;
+//         margin-left: 10px;
+
+//         input[type='checkbox'] {
+//             margin-right: 5px;
+//             display: none;
+//         }
+
+//         label {
+//             width: 85%;
+//             font-weight: normal;
+//             overflow: hidden;
+//         }
+
+//         &--check-box {
+//             margin-top: 2px;
+//             width: 30px;
+//             height: 30px;
+//             cursor: pointer;
+//             display: block;
+//             float: left;
+//             background-image: url(../../../assets/icons/icon_checkbox.png);
+//             background-repeat: no-repeat;
+//             position: absolute;
+//             left: 0;
+
+//             &.deactive {
+//                 background-position: -35px -4px;
+//             }
+
+//             &.active {
+//                 @if $isJobsCentral {
+//                     background-position: -65px -4px;
+//                 }
+
+//                 @if $isTalentCorp {
+//                     background-position: -5px -4px;
+//                 }
+//             }
+//         }
+//     }
+// }
+
+// .dropdown {
+//     height: 100%;
+//     width: 100%;
+
+//     .input-field {
+//         text-decoration: none;
+//         outline: none;
+//         border-radius: 3px;
+//         width: 100%;
+//         height: 100%;
+//         display: block;
+//         overflow: hidden;
+//     }
+
+//     .category-title {
+//         height: 40px;
+//         color: #555;
+//         font-size: 16px;
+//         line-height: 40px;
+//         margin-left: 10px;
+//     }
+
+//     .categories-list-panel {
+//         overflow: scroll;
+//         text-align: left;
+//         overflow-x: hidden;
+//         max-height: 375px;
+//         background-color: #fff;
+//         padding: 0 10px;
+//     }
+
+//     .panel-collapse {
+//         margin-left: 20px;
+
+//         .panel-body {
+//             list-style-type: none;
+
+//             input {
+//                 margin: 0 10px 0 5px;
+//             }
+//         }
+//     }
+
+//     .panel-heading {
+//         padding: 0;
+//     }
+
+//     .accordion-toggle {
+//         margin-left: 15px;
+//         font-size: 16px;
+//     }
+
+//     .field-title-heading-icon {
+//         width: 20px;
+//     }
+
+//     .select2-selection__choice {
+//         @if $isJobsCentral {
+//             background-color: #1485cb;
+//         }
+
+//         @if $isTalentCorp {
+//             background-color: #383838;
+//         }
+
+//         font-size: 14px;
+//         color: #fff;
+//         height: 30px;
+//         line-height: 30px;
+//         padding: 0 10px;
+//         border-radius: 3px;
+//         cursor: pointer;
+//         box-sizing: border-box;
+//         margin: 0 5px 5px 5px;
+//         vertical-align: baseline;
+//         white-space: nowrap;
+//         text-align: center;
+//         list-style: none;
+//         float: left;
+//     }
+
+//     .modal-dialog {
+//         width: 100%;
+//         height: 100%;
+//         padding: 0;
+//         margin: 0;
+//     }
+
+//     .modal-content {
+//         height: 100%;
+//         border-radius: 0;
+//     }
+
+//     .clear-selection__option {
+//         height: 30px;
+//         line-height: 30px;
+//         padding: 0 10px;
+//         border-radius: 3px;
+//         cursor: pointer;
+//         box-sizing: border-box;
+//         vertical-align: baseline;
+//         white-space: nowrap;
+//         text-align: center;
+//         list-style: none;
+//         float: left;
+//         font-family: 'Oxygen-Bold';
+//         font-size: 14px;
+//         line-height: 30px;
+
+//         @if $isJobsCentral {
+//             color: #acabab;
+//         }
+
+//         @if $isTalentCorp {
+//             color: #1e8da0;
+//         }
+//     }
+
+//     .select2-selection__choice__remove {
+//         color: #fff;
+//         cursor: pointer;
+//         display: inline-block;
+//         font-weight: bold;
+//         font-size: 14px;
+//         margin-right: 2px;
+//     }
+
+//     .selected-category-list-panel {
+//         width: 70%;
+//         display: inline-block;
+//         float: left;
+//     }
+
+
+//     .category-submit-button-col {
+//         width: 30%;
+//         float: right;
+
+//         .category-submit-button {
+//             right: 10px;
+//         }
+//     }
+
+//     .category-submit-button {
+//         position: absolute;
+//         background-color: #00abd1;
+
+//         @if $isJobsCentral {
+//             background-color: #f26522;
+//         }
+
+//         @if $isTalentCorp {
+//             background-color: #00abd1;
+//         }
+
+//         font-family: 'Oxygen-Bold';
+//         font-size: 16px;
+//         color: #fff;
+//         height: 30px;
+//         padding: 0 20px;
+//         border-radius: 3px;
+//         text-align: center;
+//         line-height: 30px;
+//         border: 0;
+//     }
+
+//     .selected-category-panel {
+//         position: static;
+//         top: 0px;
+//         min-height: 55px;
+//         background-color: #e8e8e8;
+//         padding: 10px;
+//         overflow: hidden;
+//         z-index: 100;
+
+//     }
+
+//     .maximum-title-row {
+//         position: absolute;
+//         bottom: 0;
+//     }
+
+//     .badge {
+//         color: #c5c5c5;
+//         font-size: 16px;
+//         margin-right: 10px;
+//         background-color: #FFFFFF;
+//         padding-top: 14px;
+//     }
+// }
+
+// .dropdown span.total-jobs-maincategory.badge {
+//     position: absolute;
+//     top: 0;
+//     right: 0;
+//     padding-top: 9px;
+// }
+
+// .dropdown span.total-jobs-subcategory.badge {
+//     padding-top: 2px;
+// }
+
+// @media (min-width: $mobile-vertical-breakpoint) {
+//     .clear {
+//         position: absolute;
+//         top: -40px;
+//         right: 0;
+//         color: #1e8da0;
+
+//         @if $isJobsCentral {
+//             color: #f26522;
+//         }
+
+//         @if $isTalentCorp {
+//             color: #1e8da0;
+//         }
+//     }
+
+//     .jobs-category-filter {
+//         .category-list {
+//             padding: 0;
+//         }
+
+//         .total-jobs-maincategory {
+//             position: absolute;
+//             top: 0;
+//             right: 0;
+//         }
+//     }
+
+//     .category-list {
+//         width: 100%;
+
+//         &__option-content {
+//             label {
+//                 font-size: 90%;
+//                 position: relative;
+//                 padding-left: 40px;
+//                 line-height: 23px;
+//             }
+//         }
+
+//         &__option-heading {
+//             position: relative;
+//             display: block;
+
+//             span {
+//                 display: block;
+//             }
+
+//             .glyphicon {
+//                 top: -4px;
+//             }
+//         }
+//     }
+
+//     .dropdown span.total-jobs-maincategory.badge {
+//         padding-top: 5px;
+//     }
+
+//     .dropdown span.total-jobs-subcategory.badge {
+//         padding-top: 2px;
+//     }
+
+//     .category-filter {
+//         &__select-dropdown {
+//             font-size: 16px;
+//         }
+
+//         &__default-text {
+//             display: inline-block;
+//             padding: 0 20px;
+//             color: #777777;
+//         }
+
+//         &__selected-items-text {
+//             padding: 10px 20px;
+//             font-size: 16px;
+//             font-family: "Oxygen-Bold";
+//         }
+
+//         &__selected-items-text--only-one {
+//             padding: 10px 20px;
+//             font-size: 16px;
+//             font-family: "Oxygen-Bold";
+//         }
+
+//         &__notitfy-text {
+//             font-size: 16px;
+//             padding: 5px 20px;
+//             color: #c6c6c6;
+//         }
+//     }
+
+//     .dropdown {
+//         .accordion-toggle {
+//             width: 90%;
+//             line-height: normal;
+//         }
+
+//         .badge {
+//             margin-right: 0;
+//         }
+//     }
+// }
+
+// @media (min-width: $tablet-vertical-breakpoint) {
+//     .clear {
+//         position: static;
+//     }
+
+//     &.open {
+//         .category-filter {
+//             &__content {
+//                 display: block;
+//                 position: relative;
+//                 height: 317px;
+//             }
+
+//             &__content-container {
+//                 overflow: hidden;
+//                 height: 100%;
+//             }
+//         }
+//     }
+
+//     .category-mobile-view {
+//         display: none;
+//     }
+
+//     .category-list {
+//         position: relative;
+//         padding: 0 10px;
+//         width: auto;
+//         height: 260px;
+//         max-height: 275px;
+
+//         &__option-heading {
+//             font-size: 16px;
+//             line-height: 40px;
+//         }
+
+//         &__option-content {
+//             font-size: 16px;
+//             line-height: 40px;
+
+//             input[type='checkbox'] {
+//                 margin-top: 15px;
+//             }
+
+//             label {
+//                 font-size: 100%;
+//             }
+//         }
+//     }
+
+//     .category-filter {
+//         &__select-dropdown--joblist {
+//             border: 1px solid #c0c0c0;
+//         }
+
+//         &__selected-items-text {
+//             padding: 0px 15px;
+//             font-size: 18px;
+//             line-height: 60px;
+//         }
+
+//         &__selected-items-text--only-one {
+//             padding: 0px 15px;
+//             font-size: 18px;
+//             line-height: 60px;
+//         }
+
+//         &__select-dropdown {
+//             font-size: 18px;
+//         }
+
+//         &__default-text {
+//             display: inline-block;
+//             padding: 0 15px;
+//             line-height: 45px;
+//         }
+
+//         &__selected-items-text--only-one {
+//             padding: 0px 20px;
+//             font-size: 18px;
+//             line-height: 60px;
+//         }
+
+//         &__notitfy-text {
+//             font-size: 18px;
+//             padding: 0px 20px;
+//             line-height: 60px;
+//         }
+
+//         &__dropdown-box {
+//             &.jobs {
+//                 right: 150px;
+//                 margin-left: 150px;
+//             }
+//         }
+
+//         &__content {
+//             &.jobs:before {
+//                 left: 50px;
+//             }
+//         }
+//     }
+
+//     .dropdown {
+//         .accordion-toggle {
+//             margin-left: 15px;
+//             font-size: 100%;
+//         }
+//     }
+
+//     .category-mobile-view{
+//         display: none;
+//     }
+// }
+
+// @media (min-width: $tablet-horizontal-breakpoint) {
+//     .category-list {
+//         height: 260px;
+//     }
+
+//     .category-filter {
+//         &__dropdown-box {
+//             &.jobs {
+//                 right: 65px;
+//                 margin-left: 67px;
+//             }
+//         }
+//     }
+// }
+
+// @media (min-width: $desktop-breakpoint) {
+//     .category-filter {
+//         &__selected-items-text {
+//             padding: 0px 20px;
+//             font-size: 20px;
+//         }
+
+//         &__selected-items-text--only-one {
+//             padding: 0px 20px;
+//             font-size: 20px;
+//         }
+
+//         &__notitfy-text {
+//             font-size: 20px;
+//             padding: 0px 20px;
+//         }
+
+//         &__select-dropdown {
+//             font-size: 20px;
+//         }
+
+//         &__default-text {
+//             display: inline-block;
+//             padding: 0 15px;
+//         }
+
+//         &__dropdown-box {
+//             right: 0;
+//         }
+
+//         &__content {
+//             &:before {
+//                 left: 40px;
+//             }
+//         }
+//     }
+
+//     &.open {
+//         .category-filter {
+//             &__content {
+//                 margin-left: 0;
+//             }
+//         }
+//     }
+// }
+
+// @media (max-width: $tablet-vertical-breakpoint) {
+//     .jobs-category-filter {
+//         height: auto;
+//     }
+
+//     .category-filter {
+//         &__dropdown-box {
+//         display: none;
+//         }
+//     }
+// }

@@ -1,0 +1,23 @@
+﻿<div class="job-seekers" [style.background-imag]="">
+  <div class="job-seekers-background hidden-xs hidden-sm" [style.background-image]="background.desktopUrl"></div>
+  <div class="job-seekers-background hidden-xs hidden-md hidden-lg" [style.background-image]="background.tabletUrl"></div>
+  <div class="job-seekers-background hidden-sm hidden-md hidden-lg" [style.background-image]="background.mobileUrl"></div>
+  <div class="col-xs-12 col-xs-12 job-seekers-wrapper">
+    <div class="welcome-wrapper">
+      <h1 class="welcome-heading" *ngIf="isJobsCentral">
+        Start your career adventure!
+      </h1>
+      <p class="welcome-text" *ngIf="isJobsCentral">
+        Let hiredNow match you with jobs and employers
+      </p>
+    </div>
+    <ul class="col-xs-12 col-sm-7 col-md-5 col-lg-3 job-seekers-overlay">
+      <li class="job-seekers-btn job-seekers_signin col-xs-12">
+        <button class="btn" (click)="signIn()" [innerHtml]="signInBtnText"></button>
+      </li>
+      <li class="job-seekers-btn job-seekers_signup col-xs-12">
+        <button class="btn" (click)="signUp()" [innerHtml]="signUpBtnText"></button>
+      </li>
+    </ul>
+  </div>
+</div>

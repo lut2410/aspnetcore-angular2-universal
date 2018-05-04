@@ -1,0 +1,85 @@
+﻿// @import "variables";
+
+// .home-search-job {
+//   position: absolute;
+//   width: 100%;
+//   top: 285px;
+
+//   & > div {
+//     float: none;
+//     margin: 0 auto;
+//     text-align: center;
+//   }
+
+//   &__title {
+//     color: #FFF;
+//     text-align: center;
+//   }
+
+//   &__search-job-container {
+//     display: table;
+//     margin: 30px auto 0 auto;
+//   }
+// }
+
+// @media (min-width: $mobile-vertical-breakpoint) {
+//   .home-search-job {
+//     @if $isJobsCentral {
+//       top: 20%;
+//     }
+
+//     @if $isTalentCorp {
+//       top: 15%;
+//     }
+
+//     &__title {
+//       width: 70%;
+//       font-size: 40px;
+//       line-height: 48px;
+//       text-align: center;
+//       margin: 0 auto;
+//     }
+
+//     &__search-job-container {
+//       display: table;
+//       margin: 0 auto;
+//     }
+//   }
+// }
+
+// @media (min-width: $tablet-vertical-breakpoint) {
+//   .home-search-job {
+//     top: 29%;
+
+//     &__title {
+//       width: 100%;
+//       font-size: 62px;
+//       line-height: 70px;
+//       text-align: center;
+//       margin: 0 auto 65px auto;
+//     }
+
+//     &__search-job-container {
+//       display: table;
+//       margin: 0;
+//     }
+//   }
+// }
+
+// @media (min-width: $tablet-horizontal-breakpoint) and (min-height: $mobile-vertical-breakpoint) {
+//   .home-search-job {
+//     top: 29%;
+
+//     &__title {
+//       width: 100%;
+//       font-size: 60px;
+//       line-height: 70px;
+//       margin: 30px auto 30px auto;
+//     }
+
+//     &__search-job-container {
+//       display: table;
+//       margin: 30px auto 0 auto;
+//     }
+//   }
+// }

@@ -1,0 +1,85 @@
+// //@import 'variables';
+
+// #search-company-in-company-list {
+//     margin: 30px 0;
+
+//     .autocomplete__input {
+//         height: 40px;
+//     }
+// }
+
+// .company-list {
+//     overflow-x: hidden;
+//     &__list-item {
+//         display: table;
+//         margin-bottom: 50px;
+//         width: 100%;
+//     }
+
+//     &__total-companies {
+//         border-bottom: 1px solid #e5e5e5;
+//     }
+
+//     &__item--no-padding {
+//         padding-left: 0;
+//     }
+
+//     &__item {
+//         margin-top: 30px;
+//         height: 350px;
+//         width: 100%;
+//         border: #e5e5e5 1px solid;
+
+//         &::after {
+//             display: block;
+//             content: "";
+//             clear: both;
+//         }
+//     }
+
+//     &__total-number {
+//         font-family: "Oxygen-Bold";
+//         font-size: 24px;
+
+//         @if $isJobsCentral { color: #f26522; }
+//         @if $isTalentCorp { color: #1e8da0; }
+//     }
+
+//     &__total-unit {
+//         font-size: 20px;
+//         color: #555555;
+//         line-height: 70px;
+//     }
+// }
+
+// @media (max-width: $tablet-vertical-breakpoint - 1) {
+//     .company-list {
+//         &__item {
+//             margin-left: 0;
+//             margin-top: 20px;
+//         }
+
+//         &__total-companies {
+//             padding-left: 15px;
+//             line-height: 30px;
+//             background-color: #666666;
+//             margin-left: -15px;
+//             width: 100vw;
+//             height: 40px;
+//         }
+
+//         &__total-number {
+//             font-size: 20px;
+//             float: left;
+//             padding-right: 5px;
+//         }
+
+//         &__total-unit {
+//             font-weight: bold;
+//             font-size: 16px;
+//             color: #ffffff;
+//             float: left;
+//             line-height: 30px;
+//         }
+//     }
+// }

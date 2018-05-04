@@ -1,0 +1,95 @@
+<div class="joblist search" id="search-job-in-job-list">
+    <app-job-search-box [isSearchConditionsReady]="isSearchConditionsReady"
+     [currentPagePath]="currentPagePath" (onSearch)="onSearch()"></app-job-search-box>
+</div>
+
+<!-- Mobile only (not tablet verticle) -->
+<div class="hidden-sm hidden-md hidden-lg container">
+    <div class="joblist_total-jobs" *ngIf="totalJobs > 0">
+        <span class="joblist_total-jobs-unit" *ngIf="currentPageIndex>1" [translate]="'JOB_SEARCH.PAGE_INDEX'" [translateParams]="{'CURRENT_PAGE':currentPageIndex}"></span>
+        <span class="joblist_total-jobs-number">{{totalJobs}}</span>
+        <span class="joblist_total-jobs-unit">{{ mainDisplaySummaryMessage | translate }}</span>
+        <div class="joblist_total-jobs-filter" (click)="openFilter()">
+            <img src="../../../assets/icons/icon_filter.svg" />
+            <span>Filter</span>
+        </div>
+        <div class="joblist_total-jobs-filter" (click)="openSort()">
+            <img src="../../../assets/icons/icon_sort.png" />
+            <span>Sort</span>
+        </div>
+    </div>
+    <div *ngIf="totalJobs <= 0">
+        <div class="joblist_total-jobs">
+            <div class="joblist_total-jobs-filter hidden-sm hidden-md hidden-lg" data-toggle="modal" data-target="#filter-modal">
+                <img src="../../../assets/icons/icon_filter.svg" />
+                <span>Filter</span>
+            </div>
+            <div class="joblist_total-jobs-filter" (click)="openSort()">
+                <img src="../../../assets/icons/icon_sort.png" />
+                <span>Sort</span>
+            </div>
+        </div>
+        <div class="joblist_total-nojob">
+            <span class="joblist_total-jobs-number">{{totalJobs}}</span>
+            <span class="joblist_total-jobs-unit">{{ mainDisplaySummaryMessage | translate }}</span>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div id="job-list" class="joblist">
+        <!-- Desktop and tablet -->
+        <div class="hidden-xs">
+            <div class="joblist_total-jobs">
+                <span class="joblist_total-jobs-unit" *ngIf="totalJobs>0 && currentPageIndex>1" [translate]="'JOB_SEARCH.PAGE_INDEX'" [translateParams]="{'CURRENT_PAGE':currentPageIndex}"></span>
+                <span class="joblist_total-jobs-number">{{totalJobs}}</span>
+                <span class="joblist_total-jobs-unit" *ngIf="totalJobs > 0" [innerHTML]="(mainDisplaySummaryMessage | translate) + getSearchSummary()"></span>
+                <span class="joblist_total-jobs-unit" *ngIf="totalJobs <= 0">{{ mainDisplaySummaryMessage| translate }}</span>
+            </div>
+
+            <div class="joblist__job-order-by-filter text-right">
+                {{"JOB_SEARCH.SHOW_JOBS" | translate}}:
+                <span class="joblist__job-order-by-filter-option" [class.active]="currentJobOrderBySelected==jobOrderBy.Relevant" (click)="selectJobOrderCondition(jobOrderBy.Relevant)">
+                    {{"JOB_SEARCH.MOST_RELEVANT" | translate}}</span>
+                <span class="joblist__job-order-by-filter-option" [class.active]="currentJobOrderBySelected==jobOrderBy.LatestDate" (click)="selectJobOrderCondition(jobOrderBy.LatestDate)">
+                    {{"JOB_SEARCH.LATEST" | translate}}</span>
+            </div>
+        </div>
+        <ul class="list-unstyled" *ngIf="jobsAndBannerAds.length > 0">
+            <li *ngFor="let job of jobsAndBannerAds| paginate: { itemsPerPage: itemsPerPage,
+                                                                currentPage: currentPageIndex,
+                                                                totalItems: totalItems }">
+                <div class="joblist_item" *ngIf="job.companyId != null">
+                    <app-job-list-item [job]="job" [isHavingLogo]="true" (navigate)="onNavigate($event)"></app-job-list-item>
+                </div>
+                <div *ngIf="job.companyId == null">
+                    <app-banner-ads [bannerAdsInfo]="job"></app-banner-ads>
+                </div>
+            </li>
+        </ul>
+        <pagination-controls class="hidden-xs text-center" [maxSize]="10" *ngIf="jobsAndBannerAds.length > 0" (pageChange)="changePage($event)"></pagination-controls>
+        <pagination-controls class="hidden-sm hidden-md hidden-lg text-center" [maxSize]="0" *ngIf="jobsAndBannerAds.length > 0"
+            (pageChange)="changePage($event)"></pagination-controls>
+    </div>
+</div>
+
+
+<!-- Mobile version -->
+<div class="hidden-sm hidden-md hidden-lg">
+    <div class="modal" id="sort-modal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="submit" class="submit-button" (click)="closeSort()">Done</button>
+                </div>
+                <div class="modal-body">
+                    <div class="pre">
+                        <h4>SHOW JOBS</h4>
+                    </div>
+                    <app-multi-radio [ngClass]="{'multiselect-dropdown': !(isMobile && !isTablet)}" [ngModelOptions]="{standalone: true}" [(ngModel)]="latestJobOrderByValue"
+                        [options]="jobOrderByOptions"></app-multi-radio>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

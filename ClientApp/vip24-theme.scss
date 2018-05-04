@@ -1,0 +1,160 @@
+﻿// //@import 'variables';
+
+// .main-navigation__job-navigation {
+
+//   .job-navigation {
+
+//     & > ul {
+//       transform: translateX(0px) !important;
+//     }
+
+//     & li:first-child {
+//       padding-right: 20px;
+//     }
+
+//     &--for-jobseekers,
+//     &--malaysia-100 {
+//       display: none;
+//     }
+//   }
+// }
+
+// .general-contact-info {
+//   .social-info {
+//     display: none;
+//   }
+// }
+
+// #footer {
+//   height: 110px;
+//   padding-top: 30px;
+
+//   .footer-menu {
+//     &__hidden {
+//       display: none;
+//     }
+//   }
+
+//   .footer-item {
+//     &__common-icon {
+//       height: 30px;
+//       width: 30px;
+//       margin-right: 10px;
+//     }
+
+//     &__common-icon:last-child {
+//       margin-right: 0;
+//     }
+//   }
+
+//   .footer-copy-right {
+//     text-align: left;
+//     margin-bottom: 0;
+//   }
+// }
+
+// @media (min-width: $mobile-vertical-breakpoint) {
+//   nav {
+//     .job-navigation {
+//       width: 100%;
+//     }
+//   }
+// }
+
+// @media (min-width: $tablet-vertical-breakpoint) {
+//   .main-navigation__job-navigation {
+//     display: block;
+//   }
+
+//   #footer {
+//     @if $isJobsCentral {
+//       height: 120px;
+//     }
+
+//     .footer-menu {
+//       display: none;
+//     }
+
+//     .footer-item {
+
+//       @if $isTalentCorp {
+//         margin-top: 15px;
+//       }
+//     }
+
+//     .wrapper-coppy-right {
+//       position: relative;
+//       top: 20px;
+//     }
+
+//     .footer-overide-padding {
+//       position: relative;
+//       top: -10px;
+//     }
+//   }
+// }
+
+// @media(min-width: $tablet-horizontal-breakpoint) {
+//   #footer {
+//     @if $isJobsCentral {
+//       height: 110px;
+//     }
+
+//     .container {
+//       position: relative;
+//     }
+
+//     .footer-menu {
+//       display: block;
+
+//       &__hidden {
+//         display: none;
+//       }
+//     }
+
+//     .footer-overide-padding {
+//       position: relative;
+//       right: 0;
+//       top: 0;
+//       padding: 0;
+//     }
+
+//     .footer-item {
+//       margin-top: 0;
+//     }
+
+//     .footer-logo {
+//       margin-bottom: 10px;
+//     }
+
+//     .wrapper-coppy-right {
+//       clear: both;
+//       position: absolute;
+//       top: 35px;
+//     }
+//   }
+
+//   .layout-wrapper {
+//     padding-bottom: 110px;
+//   }
+// }
+
+// @media(min-width: $desktop-breakpoint) {
+//   .main-navigation__job-navigation {
+//     .job-navigation {
+//       & li:first-child {
+//         padding-right: 0;
+//       }
+//     }
+//   }
+
+//   #footer {
+//     .footer-item {
+//       margin-top: 3px;
+//     }
+//   }
+
+//   .layout-wrapper {
+//     padding-bottom: 110px;
+//   }
+// }

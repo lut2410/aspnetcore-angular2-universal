@@ -1,157 +1,91 @@
-import { NgModule, Inject } from '@angular/core';
-import { RouterModule, PreloadAllModules } from '@angular/router';
-import { CommonModule, APP_BASE_HREF } from '@angular/common';
-import { HttpModule, Http } from '@angular/http';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
-import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
-import { TransferHttpCacheModule } from '@nguniversal/common';
-
-import { Ng2BootstrapModule } from 'ngx-bootstrap';
-
-// i18n support
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { Http, RequestOptions } from '@angular/http';
+import { AuthConfig, AuthHttp } from 'angular2-jwt/angular2-jwt';
 import { AppComponent } from './app.component';
-import { NavMenuComponent } from './components/navmenu/navmenu.component';
-import { HomeComponent } from './containers/home/home.component';
-import { UsersComponent } from './containers/users/users.component';
-import { UserDetailComponent } from './components/user-detail/user-detail.component';
-import { CounterComponent } from './containers/counter/counter.component';
-import { NotFoundComponent } from './containers/not-found/not-found.component';
-import { NgxBootstrapComponent } from './containers/ngx-bootstrap-demo/ngx-bootstrap.component';
+import { ToastModule } from 'ng2-toastr/ng2-toastr';
 
-import { LinkService } from './shared/link.service';
-import { UserService } from './shared/user.service';
-import { ORIGIN_URL } from '@nguniversal/aspnetcore-engine/tokens';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
-export function createTranslateLoader(http: HttpClient, baseHref) {
-    // Temporary Azure hack
-    if (baseHref === null && typeof window !== 'undefined') {
-        baseHref = window.location.origin;
-    }
-    // i18n files are in `wwwroot/assets/`
-    return new TranslateHttpLoader(http, `${baseHref}/assets/i18n/`, '.json');
+import { environment } from '../environments';
+import { CompaniesModule } from '../modules/companies';
+import { CoreModule } from '../modules/core/core.module';
+import { HomeModule } from '../modules/home';
+import { JobsModule } from '../modules/jobs';
+import { SessionStorageService } from '../modules/shared/services/session-storage.service';
+import { AppRoutingModule } from './app-routing.module';
+
+import { AuthenticationComponent } from './authentication/authentication.component';
+import { EmployersComponent } from './employers/employers.component';
+import { JobSeekersComponent } from './job-seekers/job-seekers.component';
+import { LogOffComponent } from './log-off/log-off.component';
+import { UrlSerializer } from '@angular/router';
+import { CustomUrlSerializer } from '../modules/shared/services/customUrlSerializer.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserTransferStateModule } from '../modules/transfer-state/browser-transfer-state.module';
+
+
+export function authHttpServiceFactory(http: Http, options: RequestOptions, storage: SessionStorageService) {
+  const authConfig = new AuthConfig({
+    tokenName: environment.security.tokenName,
+    tokenGetter: (() => storage.get(environment.security.tokenName)),
+    noJwtError: true
+  });
+  return new AuthHttp(authConfig, http, options);
 }
-
+export function translateFactory(http: HttpClient, baseHref) {
+  if (baseHref === null && typeof window !== 'undefined') {
+    baseHref = window.location.origin;
+  }
+  return new TranslateHttpLoader(http, `${baseHref}/assets/i18n/`, '.json');
+}
+export function translateFactory_new(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 @NgModule({
-    declarations: [
-        AppComponent,
-        NavMenuComponent,
-        CounterComponent,
-        UsersComponent,
-        UserDetailComponent,
-        HomeComponent,
-        NotFoundComponent,
-        NgxBootstrapComponent
-    ],
-    imports: [
-        CommonModule,
-        BrowserModule.withServerTransition({
-          appId: 'my-app-id' // make sure this matches with your Server NgModule
-        }),
-        HttpClientModule,
-        TransferHttpCacheModule,
-        BrowserTransferStateModule,
-
-
-        FormsModule,
-        Ng2BootstrapModule.forRoot(), // You could also split this up if you don't want the Entire Module imported
-
-        // i18n support
-        TranslateModule.forRoot({
-            loader: {
-                provide: TranslateLoader,
-                useFactory: (createTranslateLoader),
-                deps: [HttpClient, [ORIGIN_URL]]
-            }
-        }),
-
-        // App Routing
-        RouterModule.forRoot([
-            {
-                path: '',
-                redirectTo: 'home',
-                pathMatch: 'full'
-            },
-            {
-                path: 'home', component: HomeComponent,
-
-                // *** SEO Magic ***
-                // We're using "data" in our Routes to pass in our <title> <meta> <link> tag information
-                // Note: This is only happening for ROOT level Routes, you'd have to add some additional logic if you wanted this for Child level routing
-                // When you change Routes it will automatically append these to your document for you on the Server-side
-                //  - check out app.component.ts to see how it's doing this
-                data: {
-                    title: 'Homepage',
-                    meta: [{ name: 'description', content: 'This is an example Description Meta tag!' }],
-                    links: [
-                        { rel: 'canonical', href: 'http://blogs.example.com/blah/nice' },
-                        { rel: 'alternate', hreflang: 'es', href: 'http://es.example.com/' }
-                    ]
-                }
-            },
-            {
-                path: 'counter', component: CounterComponent,
-                data: {
-                    title: 'Counter',
-                    meta: [{ name: 'description', content: 'This is an Counter page Description!' }],
-                    links: [
-                        { rel: 'canonical', href: 'http://blogs.example.com/counter/something' },
-                        { rel: 'alternate', hreflang: 'es', href: 'http://es.example.com/counter' }
-                    ]
-                }
-            },
-            {
-                path: 'users', component: UsersComponent,
-                data: {
-                    title: 'Users REST example',
-                    meta: [{ name: 'description', content: 'This is User REST API example page Description!' }],
-                    links: [
-                        { rel: 'canonical', href: 'http://blogs.example.com/chat/something' },
-                        { rel: 'alternate', hreflang: 'es', href: 'http://es.example.com/users' }
-                    ]
-                }
-            },
-            {
-                path: 'ngx-bootstrap', component: NgxBootstrapComponent,
-                data: {
-                    title: 'Ngx-bootstrap demo!!',
-                    meta: [{ name: 'description', content: 'This is an Demo Bootstrap page Description!' }],
-                    links: [
-                        { rel: 'canonical', href: 'http://blogs.example.com/bootstrap/something' },
-                        { rel: 'alternate', hreflang: 'es', href: 'http://es.example.com/bootstrap-demo' }
-                    ]
-                }
-            },
-
-            { path: 'lazy', loadChildren: './containers/lazy/lazy.module#LazyModule'},
-
-            {
-                path: '**', component: NotFoundComponent,
-                data: {
-                    title: '404 - Not found',
-                    meta: [{ name: 'description', content: '404 - Error' }],
-                    links: [
-                        { rel: 'canonical', href: 'http://blogs.example.com/bootstrap/something' },
-                        { rel: 'alternate', hreflang: 'es', href: 'http://es.example.com/bootstrap-demo' }
-                    ]
-                }
-            }
-        ], {
-          // Router options
-          useHash: false,
-          preloadingStrategy: PreloadAllModules,
-          initialNavigation: 'enabled'
-        })
-    ],
-    providers: [
-        LinkService,
-        UserService,
-        TranslateModule
-    ],
-    bootstrap: [AppComponent]
+  declarations: [
+    AppComponent,
+    EmployersComponent,
+    AuthenticationComponent,
+    JobSeekersComponent,
+    LogOffComponent
+  ],
+  imports: [
+    BrowserAnimationsModule,    //actually in app.module.browser.ts (universal)
+    BrowserTransferStateModule, //actually in app.module.browser.ts (universal)
+    BrowserModule,
+    AppRoutingModule,
+    CoreModule,
+    HomeModule,
+    CompaniesModule,
+    JobsModule,
+    ToastModule.forRoot(),
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+          provide: TranslateLoader,
+          useFactory: (translateFactory_new),
+          deps: [HttpClient]
+          // deps: [Http, [ORIGIN_URL]],
+      }
+  }),
+  BrowserModule.withServerTransition({
+      appId: 'my-app-id' // make sure this matches with your Browser NgModule
+  }),
+  ],
+  providers: [
+    {
+        provide: AuthHttp,
+        useFactory: authHttpServiceFactory,
+        deps: [Http, RequestOptions, SessionStorageService],
+    },
+    { 
+        provide: UrlSerializer,
+        useClass: CustomUrlSerializer
+    }
+],
+  bootstrap: [AppComponent]
 })
-export class AppModuleShared {
-}
+export class AppModuleShared { }

@@ -1,0 +1,16 @@
+.main-spinner {
+    position: fixed;
+    top: 45%;
+    left: 48%;
+    font-size: 70px;
+    z-index: 1064; //Keep it less than or equal main-overlay z-index
+}
+
+.main-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 1065;
+}

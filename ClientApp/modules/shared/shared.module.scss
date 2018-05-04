@@ -1,0 +1,292 @@
+﻿//@import 'variables';
+
+#search-job-in-home {
+  .autocomplete {
+    &__dropdown {
+      width: 100%;
+    }
+  }
+
+  .search-job__toggle-options-container {
+    color: #fff;
+  }
+}
+
+#search-job-in-job-list {
+  .jobs-search-job {
+    &__btn-search-container {
+      button {
+        @if $isJobsCentral {
+          background-color: #000;
+        }
+      }
+    }
+  }
+
+  .autocomplete {
+    &__dropdown {
+      width: 200%;
+    }
+  }
+
+  .clear-all {
+    @if $isJobsCentral {
+      color: #ffffff;
+      padding-bottom: 0;
+      line-height: 2;
+    }
+
+    @if $isTalentCorp {
+      color: #1e8da0;
+    }
+  }
+
+  #indicator {
+    div {
+      @if $isJobsCentral {
+        color: #fff;
+      }
+    }
+  }
+}
+
+.caret {
+  position: absolute;
+  top: calc(50%);
+  right: 20px;
+}
+
+pagination-controls {
+  font-size: 20px;
+
+  pagination-template .ngx-pagination {
+    padding-left: 0;
+    padding: 30px 0 0 0;
+
+    li {
+      line-height: 50px;
+      margin: 0 5px;
+
+      a {
+        color: #555;
+
+        &:hover {
+          color: $globalBackgroundColor;
+          background: none;
+          text-decoration: none;
+        }
+      }
+    }
+
+    .current {
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      text-align: center;
+      padding: 0;
+      background-color: $globalBackgroundColor;
+    }
+  }
+}
+
+@media(min-width: $mobile-vertical-breakpoint) {
+  #search-job-in-home {
+    .autocomplete {
+      &__input {
+        height: 50px;
+        font-size: 16px;
+      }
+    }
+
+    .category-filter {
+      &__notitfy-text {
+        padding: 6px 45px;
+      }
+    }
+  }
+
+  #search-company {
+    .autocomplete {
+      width: 100%;
+
+      &__input {
+        height: 40px;
+        font-size: 16px;
+        width: 100%;
+        border-right: 1px solid #c0c0c0;
+      }
+
+      &__dropdown {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media(min-width: $tablet-vertical-breakpoint) {
+  #search-job-in-home {
+    .autocomplete {
+      &__input {
+        width: 270px;
+        height: 60px;
+        font-size: 18px;
+        padding-left: 15px;
+      }
+    }
+
+    &__default-text {
+      font-size: 18px;
+    }
+
+    .category-filter {
+
+      &__default-text {
+        padding-left: 15px;
+        line-height: 60px;
+        font-size: 18px;
+      }
+
+      &__notitfy-text {
+        padding: 0 45px;
+      }
+    }
+  }
+
+  #search-job-in-job-list {
+    .autocomplete {
+      display: block;
+
+      &__input {
+        @if $isJobsCentral {
+          border: none;
+        }
+
+        @if $isTalentCorp {
+          border: 1px solid #c0c0c0;
+        }
+
+        height: 45px;
+        font-size: 16px;
+        width: 100%;
+        line-height: 45px;
+        border-radius: 3px;
+        color: #777;
+      }
+    }
+  }
+}
+
+@media (min-width: $tablet-horizontal-breakpoint) {
+
+}
+
+@media (min-width: $desktop-breakpoint) {
+  #search-job-in-home {
+    .autocomplete {
+      &__input {
+        width: 390px;
+        height: 60px;
+        font-size: 20px;
+        padding: 0 20px;
+      }
+    }
+
+    .category-filter {
+      &__dropdown-box {
+        width: 500px;
+      }
+
+      &__default-text {
+        font-size: 20px;
+        padding: 0 20px;
+      }
+
+      &__select-dropdown {
+        font-size: 20px;
+        line-height: 60px;
+      }
+    }
+
+    ss-multiselect-dropdown {
+      .btn-group {
+        width: 390px;
+
+        button.btn {
+          overflow: hidden;
+          width: 100%;
+          height: 60px;
+          text-align: left;
+          font-size: 20px;
+          padding-left: 20px;
+          padding-right: 20px;
+          color: #777777;
+          position: relative;
+        }
+
+        ul.dropdown-menu {
+          width: 100%;
+        }
+      }
+    }
+
+    .search-job__toggle-options-container {
+      line-height: 60px;
+    }
+
+    #search-job-btn-search {
+      font-size: 20px;
+      line-height: 60px;
+    }
+  }
+
+  #search-job-in-job-list {
+    .autocomplete {
+      &__input {
+        @if $isJobsCentral {
+          border: none;
+        }
+
+        height: 40px;
+        font-size: 16px;
+        line-height: 40px;
+        padding: 0 20px;
+      }
+    }
+
+    .category-filter {
+      &__dropdown-box {
+        width: 380px;
+      }
+
+      &__default-text {
+        height: 40px;
+        line-height: 40px;
+      }
+    }
+
+    ss-multiselect-dropdown {
+      .btn-group {
+        width: 220px;
+
+        button.btn {
+          overflow: hidden;
+          width: 100%;
+          height: 40px;
+          text-align: left;
+          font-size: 16px;
+          padding-left: 20px;
+          padding-right: 20px;
+          color: #777777;
+          position: relative;
+        }
+
+        ul.dropdown-menu {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: $desktop-extra-breakpoint) {
+}

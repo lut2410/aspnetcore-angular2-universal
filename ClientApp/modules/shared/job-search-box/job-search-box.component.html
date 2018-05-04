@@ -1,0 +1,190 @@
+<div>
+    <form (ngSubmit)="doSearch($event)">
+        <div *ngFor="let config of configs">
+            <div *ngIf="config.active" [ngSwitch]="config.path">
+                <div *ngSwitchCase="'home'">
+                    <div class="search-job__search-fields">
+                        <div id="search">
+                            <div class="search-job__input-container" *ngIf="fields.what.active">
+                                <app-autocomplete (onSelected)="onSelected()" [param]="whatParam" [(ngModel)]="searchCondition.what" name="searchWhat">
+                                </app-autocomplete>
+                            </div>
+                            <div class="search-job__input-container" *ngIf="fields.where.active">
+                                <app-autocomplete (onSelected)="onSelected()" [param]="whereParam" [(ngModel)]="searchCondition.where" name="searchWhere">
+                                </app-autocomplete>
+                            </div>
+                            <div class="collapse collapse-container" id="collapse-container-home" [class.in]="haveData">
+                                <div class="search-job__category-input-container" *ngIf="fields.category.active">
+                                    <app-category-filter (onSelected)="onSelected()" showResultField="true" [selectedCategories]="searchCondition.categories"
+                                        screen="jobSearch"></app-category-filter>
+                                </div>
+                                <div class="search-job__input-container" *ngIf="fields.extentOfWorks.active">
+                                    <app-multi-dropdown class="multiselect-dropdown" [settings]="selectSettings" [texts]="jobTypesSelectorConfig" name="extend-of-work-selector"
+                                        [options]="extentOfWorks" [(ngModel)]="searchCondition.extentOfWorks"></app-multi-dropdown>
+                                </div>
+                                <div class="search-job__clear-all-container active hidden-xs">
+                                    <div class="clear-all" (click)="clearAllFilter()">{{ "JOB_SEARCH.CLEAR_ALL_FILTERS" | translate }}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="search-job__toggle-options-container">
+                            <app-collapse-indicator targetId="#collapse-container-home" [settings]="settings"></app-collapse-indicator>
+                        </div>
+                        <div class="search-job__clear-all-container hidden-sm hidden-md hidden-lg" [class.active]="settings.isExpand">
+                            <div class="clear-all" (click)="clearAllFilter()">{{ "JOB_SEARCH.CLEAR_ALL_FILTERS" | translate }}</div>
+                        </div>
+                        <div class="search-job__btn-search-container">
+                            <button type="submit" id="search-job-btn-search">{{ findJobButtonText }}</button>
+                        </div>
+                    </div>
+                    <div class="search-job__summary" *ngIf="numberOfJobs > limitJobDisplay">{{ "JOB_SEARCH.SEARCH_THROUGH" | translate }}&nbsp;
+                        <span class="search-job__count">{{numberOfJobs}}</span>&nbsp;{{ "JOB_SEARCH.JOBS" | translate }}</div>
+                </div>
+
+                <div *ngSwitchCase="'jobs'" class="jobs-search-job__search-fields">
+                    <!--Desktop only -->
+                    <div class="hidden-xs hidden-sm hidden-md container">
+                        <div class="col-lg-12 row search-box" id="search">
+                            <div id="what-container" class="col-lg-6 jobs-search-job__input-container" *ngIf="fields.what.active">
+                                <app-autocomplete (onSelected)="onSelected()" device="desktop" [param]="whatParam" [(ngModel)]="searchCondition.what" name="searchWhat">
+                                </app-autocomplete>
+                            </div>
+                            <div id="where-container" class="col-lg-3 jobs-search-job__input-container" *ngIf="fields.where.active">
+                                <app-autocomplete (onSelected)="onSelected()" [param]="whereParam" [(ngModel)]="searchCondition.where" name="searchWhere">
+                                </app-autocomplete>
+                            </div>
+                            <div class="jobs-search-job__toggle-options-container">
+                                <app-collapse-indicator [(settings)]="settings" targetId="#collapse-container-jobs-desktop"></app-collapse-indicator>
+                            </div>
+                            <div class="jobs-search-job__btn-search-container">
+                                <button type="submit" id="search-job-btn-search">{{ "JOB_SEARCH.FIND_JOBS" | translate }}</button>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12 row search-box collapse collapse-container" id="collapse-container-jobs-desktop" [class.in]="haveData">
+                            <div class="col-lg-3 jobs-search-job__category-input-container" *ngIf="fields.category.active">
+                                <app-category-filter (onSelected)="onSelected()" showResultField="true" [selectedCategories]="searchCondition.categories"
+                                    (clearSearch)="clearCategory($event)" screen="jobList"></app-category-filter>
+                            </div>
+                            <div class="col-lg-3 jobs-search-job__input-container" *ngIf="fields.professionalLevels.active">
+                                <app-multi-dropdown class="multiselect-dropdown" id="positions-multi-dropdown" [settings]="selectSettings" [texts]="jobPositionsSelectorConfig"
+                                    name="professional-levels" [options]="professionalLevels" [(ngModel)]="searchCondition.professionalLevels"></app-multi-dropdown>
+                            </div>
+                            <div class="col-lg-3 jobs-search-job__input-container" *ngIf="fields.extentOfWorks.active">
+                                <app-multi-dropdown class="multiselect-dropdown" [settings]="selectSettings" [texts]="jobTypesSelectorConfig" name="extend-of-word-selector"
+                                    [options]="extentOfWorks" [(ngModel)]="searchCondition.extentOfWorks"></app-multi-dropdown>
+                            </div>
+                            <!--<div class="jobs-search-job__input-container" *ngIf="fields.salary.active">
+                                <app-salary-box *ngIf="false"></app-salary-box>
+                            </div>-->
+                            <div class="jobs-search-job__clear-all-container">
+                                <div class="clear-all" (click)="clearAllFilter()">{{ "JOB_SEARCH.CLEAR_ALL_FILTERS" | translate }}</div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!--Tablet only -->
+                    <div class="hidden-xs hidden-lg">
+                        <div class="row col-sm-12 search-box" id="search">
+                            <div id="what-container" class="col-sm-8 jobs-search-job__input-container" *ngIf="fields.what.active">
+                                <app-autocomplete (onSelected)="onSelected()" [param]="whatParam" [(ngModel)]="searchCondition.what" name="searchWhat">
+                                </app-autocomplete>
+                            </div>
+                            <div id="where-container" class="col-sm-4 jobs-search-job__input-container" *ngIf="fields.where.active">
+                                <app-autocomplete (onSelected)="onSelected()" [param]="whereParam" [(ngModel)]="searchCondition.where" name="searchWhere">
+                                </app-autocomplete>
+                            </div>
+                        </div>
+                        <div class="row col-sm-12 search-box collapse collapse-container" id="collapse-container-jobs-tablet" [class.in]="haveData">
+                            <div class="col-sm-4 jobs-search-job__category-input-container" *ngIf="fields.category.active">
+                                <app-category-filter (onSelected)="onSelected()" device="tablet" showResultField="true" [selectedCategories]="searchCondition.categories"
+                                    (clearSearch)="clearCategory($event)" screen="jobList">
+                                </app-category-filter>
+                            </div>
+                            <div class="col-sm-4 jobs-search-job__input-container" *ngIf="fields.professionalLevels.active">
+                                <app-multi-dropdown class="multiselect-dropdown" id="positions-multi-dropdown" [settings]="selectSettings" [texts]="jobPositionsSelectorConfig"
+                                    name="professional-levels" [options]="professionalLevels" [(ngModel)]="searchCondition.professionalLevels"></app-multi-dropdown>
+                            </div>
+                            <div class="col-sm-4 jobs-search-job__input-container" *ngIf="fields.extentOfWorks.active">
+                                <app-multi-dropdown class="multiselect-dropdown" [settings]="selectSettings" [texts]="jobTypesSelectorConfig" name="extend-of-word-selector"
+                                    [options]="extentOfWorks" [(ngModel)]="searchCondition.extentOfWorks"></app-multi-dropdown>
+                            </div>
+                            <!--<div class="col-sm-4 jobs-search-job__input-container" *ngIf="fields.salary.active">
+                                <app-salary-box *ngIf="false"></app-salary-box>
+                            </div>-->
+                        </div>
+                        <div class="jobs-search-job__toggle-options-container">
+                            <app-collapse-indicator [(settings)]="settings" targetId="#collapse-container-jobs-tablet"></app-collapse-indicator>
+                        </div>
+                        <div class="jobs-search-job__btn-search-container pull-right">
+                            <button type="submit" id="search-job-btn-search">{{ "JOB_SEARCH.FIND_JOBS" | translate }}</button>
+                        </div>
+                        <div class="clear-all" (click)="clearAllFilter()">{{ "JOB_SEARCH.CLEAR_ALL_FILTERS" | translate }}</div>
+                    </div>
+
+                    <!-- Mobile only -->
+                    <div class="hidden-sm hidden-md hidden-lg">
+                        <div class="container row search-box" id="search">
+                            <div id="what-container" class="jobs-search-job__input-container jobs-search-job__search-mobile" *ngIf="fields.what.active">
+                                <app-autocomplete [param]="whatParam" [(ngModel)]="searchCondition.what" name="searchWhat">
+                                </app-autocomplete>
+                            </div>
+                            <div class="jobs-search-job__btn-search-container">
+                                <button type="submit" id="search-job-btn-search">
+                                    <img src="../../../assets/images/job-detail/icon_search.svg" />
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="modal" id="filter-modal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <div class="clear-all" (click)="clearAllFilter()">{{ "JOB_SEARCH.CLEAR_ALL_FILTERS" | translate }}</div>
+                                        <button type="submit" class="category-submit-button" (click)="closeFilter()">Done</button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="pre">
+                                            <h4>Job categories</h4>
+                                        </div>
+                                        <div class="jobs-search-job__category-input-container" *ngIf="fields.category.active">
+                                            <app-category-filter (onSelected)="onSelected()" device="mobile" showResultField="false" [selectedCategories]="searchCondition.categories"
+                                                (clearSearch)="clearCategory($event)" screen="jobList"></app-category-filter>
+                                        </div>
+                                        <div id="where-container" class="jobs-search-job__input-container" *ngIf="fields.where.active">
+                                            <hr />
+                                            <h4>Location</h4>
+                                            <app-autocomplete [param]="whereParam" [(ngModel)]="searchCondition.where" name="searchWhere">
+                                            </app-autocomplete>
+                                        </div>
+                                        <div class="jobs-search-job__input-container" *ngIf="fields.extentOfWorks.active">
+                                            <hr />
+                                            <h4>Job type</h4>
+                                            <app-multi-dropdown [ngClass]="{'multiselect-dropdown': !(isMobile && !isTablet)}" [settings]="selectSettings" [texts]="jobTypesSelectorConfig"
+                                                name="extend-of-word-selector" [options]="extentOfWorks" [(ngModel)]="searchCondition.extentOfWorks"></app-multi-dropdown>
+                                        </div>
+                                        <div class="jobs-search-job__input-container" *ngIf="fields.salary.active">
+                                            <div *ngIf="false">
+                                                <hr />
+                                                <h4>Salary range</h4>
+                                                <app-salary-box></app-salary-box>
+                                            </div>
+                                        </div>
+                                        <div class="jobs-search-job__input-container" *ngIf="fields.professionalLevels.active">
+                                            <hr />
+                                            <h4>Job position</h4>
+                                            <app-multi-dropdown [ngClass]="{'multiselect-dropdown': !(isMobile && !isTablet)}" id="positions-multi-dropdown" [settings]="selectSettings"
+                                                [texts]="jobPositionsSelectorConfig" name="professional-levels" [options]="professionalLevels"
+                                                [(ngModel)]="searchCondition.professionalLevels"></app-multi-dropdown>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

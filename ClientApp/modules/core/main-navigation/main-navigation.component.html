@@ -1,0 +1,10 @@
+﻿<div class="main-navigation" [class.home]="rla.isActive">
+  <div>
+    <div class="main-navigation__logo">
+      <a routerLink="/" routerLinkActive [routerLinkActiveOptions]="{exact: true}" #rla="routerLinkActive"><img class="main-navigation__logo-img" [alt]="logoAlternativeText" src="{{companyLogo}}" /></a>
+    </div>
+    <div class="navigation-wrapper">
+        <app-job-navigation></app-job-navigation>
+    </div>
+  </div>
+</div>

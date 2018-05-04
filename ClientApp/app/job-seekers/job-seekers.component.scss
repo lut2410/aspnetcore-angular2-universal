@@ -1,0 +1,210 @@
+﻿// //@import 'variables';
+
+// .job-seekers {
+//   position: absolute;
+//   width: 100%;
+//   height: 100vh;
+//   /*display: flex;*/
+//   top: 0;
+//   left: 0;
+//   text-align: center;
+//   display: table;
+
+//   &-background {
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     width: 100%;
+//     height: 100%;
+//     background-size: cover;
+//     background-repeat: no-repeat;
+//   }
+
+//   &-wrapper {
+//     align-self: center;
+//     position: relative;
+//     margin-top: 12%;
+
+//     .welcome-wrapper {
+//       margin-bottom: 30px;
+//     }
+
+//     .welcome-heading {
+//       font-size: 60px;
+//       color: white;
+//     }
+
+//     .welcome-text {
+//       font-size: 24px;
+//       color: white;
+//     }
+//   }
+
+//   &-overlay {
+//     background: rgba(0,0,0,0.7);
+//     float: none;
+//     margin: 0 auto;
+//     padding: 15px 0;
+//     border-radius: 3px;
+//   }
+
+//   &-btn {
+//     border-radius: 3px;
+//     text-align: center;
+//     float: none;
+//     list-style: none;
+
+//     .btn {
+//       width: 100%;
+//       font-size: 16px;
+
+//       @if $isJobsCentral {
+//         height: 50px;
+//       }
+//     }
+//   }
+
+//   &_signin {
+//     .btn {
+//       @if $isJobsCentral {
+//         background-color: #f25622;
+//       }
+
+//       @if $isTalentCorp {
+//         background-color: #00abd1;
+//       }
+
+//       color: #fff;
+//     }
+
+//     margin-bottom: 15px;
+//   }
+
+//   &_signup {
+//     .btn {
+//       @if $isJobsCentral {
+//         color: #f25622;
+//       }
+
+//       @if $isTalentCorp {
+//         color: #1e8da0;
+//       }
+
+//       background-color: #fff;
+//     }
+//   }
+// }
+
+// @media (min-width: $mobile-vertical-breakpoint) {
+//   .job-seekers {
+//     &-wrapper {
+//       margin-top: 34%;
+
+//       .welcome-heading {
+//         font-size: 24px;
+//       }
+
+//       .welcome-text {
+//         font-size: 14px;
+//       }
+//     }
+
+//     &_signin {
+//       .btn {
+//         font-size: 14px;
+//         height: auto;
+//       }
+//     }
+
+//     &_signup {
+//       .btn {
+//         font-size: 14px;
+//         height: auto;
+//       }
+//     }
+//   }
+// }
+
+// @media (min-width: $mobile-horizontal-breakpoint) {
+//   .job-seekers {
+//     &-wrapper {
+//       margin-top: 12%;
+
+//       .welcome-heading {
+//         font-size: 24px;
+//       }
+
+//       .welcome-text {
+//         font-size: 14px;
+//       }
+//     }
+//   }
+// }
+
+// @media (min-width: $tablet-vertical-breakpoint) {
+//   .job-seekers {
+//     &-wrapper {
+//       margin-top: 34%;
+
+//       .welcome-heading {
+//         font-size: 60px;
+//       }
+
+//       .welcome-text {
+//         font-size: 24px;
+//       }
+//     }
+
+//     &_signin {
+//       .btn {
+//         font-size: 16px;
+//         height: 50px;
+//       }
+//     }
+
+//     &_signup {
+//       .btn {
+//         font-size: 16px;
+//         height: 50px;
+//       }
+//     }
+//   }
+// }
+
+// @media (min-width: $tablet-horizontal-breakpoint) {
+//   .job-seekers {
+//     min-height: 680px;
+//     &-wrapper {
+//       margin-top: 12%;
+
+//       .welcome-heading {
+//         font-size: 60px;
+//       }
+
+//       .welcome-text {
+//         font-size: 24px;
+//       }
+//     }
+//   }
+// }
+
+// @media (min-width: $tablet-vertical-breakpoint) and (max-width: $tablet-horizontal-breakpoint) {
+//   .job-seekers {
+//       min-height: 860px;
+//   }
+// }
+
+// @media only screen and (min-device-width: $mobile-vertical-breakpoint) and (max-device-width: $tablet-vertical-breakpoint - 1) and (orientation: landscape) {
+//   .job-seekers {
+//     &-background {
+//       background-position: center center;
+//       background-image: url('../../assets/images/job-seekers/jobscentral_tablet_login.jpg') !important;
+//     }
+//     &-wrapper {
+//       top: 0;
+//     }
+//     &-overlay {
+//       width: 40%;
+//     }
+//   }
+// }

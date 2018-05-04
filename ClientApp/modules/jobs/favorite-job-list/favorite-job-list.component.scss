@@ -1,0 +1,250 @@
+﻿// @import "variables";
+
+// .joblist {
+//   padding-bottom: 30px;
+
+//   &.search {
+//     padding-top: 30px;
+//     padding-bottom: 30px;
+//     align-content: center;
+
+//     @if $isJobsCentral {
+//       background: #e15535;
+//     }
+
+//     @if $isTalentCorp {
+//       background: #f5f5f5;
+//     }
+//   }
+
+//   > ul > li:last-child {
+//     .joblist_item {
+//       border-bottom: none;
+//     }
+//   }
+
+//   &_item {
+//     padding: 30px 0;
+//     border-top: 1px solid #e5e5e5;
+//   }
+
+//   &_nodata {
+//     text-align: center;
+//     font-size: 16px;
+//     color: #ef474f;
+//     padding: 30px 0;
+//   }
+
+//   &_total-jobs {
+//     padding-left: 15px;
+//     line-height: 65px;
+//   }
+
+//   &_total-jobs-number {
+//     font-size: 24px;
+//     font-family: "Oxygen-Bold";
+
+//     @if $isJobsCentral {
+//       color: #f26522;
+//     }
+
+//     @if $isTalentCorp {
+//       color: #1e8da0;
+//     }
+
+//     padding-right: 10px;
+//   }
+
+//   &_total-jobs-unit {
+//     font-size: 20px;
+//     color: #555;
+//   }
+
+//   &_total-nojob-wrapper {
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     width: 100%;
+//     height: 100%;
+//     display: flex;
+//     text-align: center;
+//     z-index: -1;
+//   }
+
+//   &_total-nojob-favorite-icon {
+//     display: block;
+//     margin: 0 auto;
+//     text-align: center;
+//   }
+
+//   &_total-nojob-unit {
+//     font-size: 20px;
+//     color: #555;
+//     align-self: center;
+//     margin: 0 auto;
+//     position: relative;
+//     top: -10%;
+//     padding: 0 20px;
+//     line-height: 35px;
+//   }
+// }
+
+// .sticky {
+//   position: sticky;
+//   width: 100%;
+//   left: 0;
+//   top: 0;
+//   z-index: 100;
+//   border-top: 0;
+// }
+
+// .loader {
+//   position: absolute;
+//   top: 40%;
+//   left: 50%;
+// }
+
+// @media only screen and (min-width: $mobile-vertical-breakpoint) and (max-width: $tablet-vertical-breakpoint) {
+
+//   .joblist {
+
+//     &.search {
+//       padding-top: 15px;
+//       padding-bottom: 15px;
+//     }
+
+//     &_item {
+//       padding: 10px 0;
+//     }
+
+//     &_total-jobs {
+//       padding-left: 20px;
+//       line-height: 40px;
+//       background-color: #666666;
+//       margin: 0 -15px;
+//       height: 40px;
+//     }
+
+//     &_total-nojob {
+//       .joblist_total-jobs-unit {
+//         color: #000000;
+//         font-size: 100%;
+//       }
+//     }
+
+//     &_total-nojob-unit {
+//       font-size: 16px;
+//       line-height: 24px;
+//     }
+
+//     &_total-jobs-number {
+//       font-size: 20px;
+//     }
+
+//     &_total-jobs-filter,
+//     &_total-jobs-unit {
+//       font-weight: bold;
+//       font-size: 16px;
+//       color: #ffffff;
+//     }
+
+//     &_total-jobs-filter {
+//       float: right;
+//       padding-right: 17px;
+//       cursor: pointer;
+//       text-decoration: none;
+
+//       img {
+//         width: 16px;
+//       }
+//     }
+//   }
+// }
+
+// @media(min-width: $tablet-vertical-breakpoint) {
+//   .joblist {
+//     &_total-jobs-filter {
+//       display: none;
+//     }
+
+//     &_total-jobs {
+//       margin: 0 -23px;
+//     }
+//   }
+// }
+
+// @media(min-width: $desktop-breakpoint) {
+
+//   .joblist {
+//     padding-bottom: 30px;
+
+//     &.search {
+//       padding-top: 30px;
+//       padding-bottom: 30px;
+//       align-content: center;
+
+//       @if $isJobsCentral {
+//         background: #e15535;
+//       }
+
+//       @if $isTalentCorp {
+//         background: #f5f5f5;
+//       }
+//     }
+
+//     > ul > li:last-child {
+//       .joblist_item {
+//         border-bottom: none;
+//       }
+//     }
+
+//     &_item {
+//       padding: 30px 0;
+//       border-bottom: 1px solid #e5e5e5;
+//     }
+
+//     &_nodata {
+//       text-align: center;
+//       font-size: 16px;
+//       color: #ef474f;
+//       padding: 30px 0;
+//     }
+
+//     &_total-jobs {
+//       padding-left: 15px;
+//       line-height: 65px;
+//       margin: 0;
+//     }
+
+//     &_total-jobs-number {
+//       font-size: 24px;
+//       font-family: "Oxygen-Bold";
+
+//       @if $isJobsCentral {
+//         color: #f26522;
+//       }
+
+//       padding-right: 10px;
+//     }
+
+//     &_total-jobs-unit {
+//       font-size: 20px;
+//       color: #555;
+//     }
+//   }
+
+//   .sticky {
+//     position: sticky;
+//     width: 100%;
+//     left: 0;
+//     top: 0;
+//     z-index: 100;
+//     border-top: 0;
+//   }
+
+//   .loader {
+//     position: absolute;
+//     top: 40%;
+//     left: 50%;
+//   }
+// }

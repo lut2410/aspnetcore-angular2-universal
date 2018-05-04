@@ -1,0 +1,220 @@
+﻿// //@import 'variables';
+
+// a {
+//   text-decoration: none;
+// }
+
+// .jobitem {
+//   &__custom-apply {
+//     background-color: #FFF;
+
+//     @if $isJobsCentral {
+//       color: #F26427;
+//       border-color: #F26427;
+//     }
+
+//     @if $isTalentCorp {
+//       color: #ff9a00;
+//       border-color: #ff9a00;
+//     }
+
+//     margin-top: 10px;
+//     line-height: 24px;
+//     font-size: 16px;
+//     border-radius: 3px;
+//     width: 100%;
+
+//     @if $isTalentCorp {
+//       padding: 5px 12px 8px;
+//       font-weight: bold;
+//     }
+
+//     &:active {
+//       @if $isJobsCentral {
+//         border-color: #F26427;
+//         background-color: #F26427;
+//       }
+
+//       @if $isTalentCorp {
+//         border-color: #ff9a00;
+//         background-color: #ff9a00;
+//       }
+//     }
+//   }
+
+//   &_company-logo-container {
+//     text-align: center;
+//   }
+
+//   &_company-logo {
+//     width: 70%;
+//     height: auto;
+//     margin: auto;
+//     padding: 5px;
+//     background: #fff;
+//     border-radius: 3px;
+//     cursor: pointer;
+//   }
+
+//   &__title {
+//     font-family: "Oxygen-Regular";
+//     font-size: 30px;
+//     line-height: 36px;
+
+//     @if $isJobsCentral {
+//       color: #555;
+//     }
+
+//     @if $isTalentCorp {
+//       color: #00457c;
+//     }
+
+//     padding-bottom: 20px;
+//     cursor: pointer;
+//     margin-bottom: 20px;
+//   }
+
+//   &__summary {
+//     line-height: 27px;
+//     color: #555;
+//     cursor: pointer;
+//   }
+
+//   &__time-location-position-type {
+//     &-icon {
+//       padding-right: 10px;
+//     }
+
+//     &-text {
+//       color: #555555;
+//     }
+
+//     font-size: 16px;
+//     color: #1485cc;
+//     line-height: 50px;
+//   }
+
+//   &__readmore-container {
+//     padding-top: 20px;
+//   }
+// }
+
+// @media(min-width: 320px) {
+//   .row {
+//     div:first-child {
+//       padding-right: 0;
+//     }
+
+//     div.pull-right {
+//       float: right;
+//     }
+//   }
+
+//   .jobitem {
+//     &_company-logo-container {
+//       text-align: center;
+//     }
+
+//     &_company-logo {
+//       height: auto;
+//       margin: auto;
+//       padding: 5px;
+//       border-radius: 3px;
+//     }
+
+//     &__title {
+//       font-size: 18px;
+//       line-height: 20px;
+//       padding-bottom: 0;
+//       margin-bottom: 0;
+//     }
+
+//     &__summary {
+//       line-height: 27px;
+//       font-size: 14px;
+//       color: #777777;
+//       margin-top: 5px;
+//     }
+
+//     &__time-location-position-type {
+//       &-icon {
+//         padding-right: 10px;
+//         margin-top: -5px;
+//       }
+
+//       font-size: 14px;
+//       line-height: 27px;
+//     }
+
+//     &__readmore-container {
+//       padding-top: 20px;
+//     }
+//   }
+// }
+
+// @media(max-width: $tablet-vertical-breakpoint - 1) {
+//   .jobitem {
+//     &__company-name-container {
+//       display: none;
+//     }
+//   }
+// }
+
+// @media(min-width: $tablet-vertical-breakpoint) {
+//   .jobitem {
+//     &__time-location-position-type {
+//       float: left;
+//       line-height: 40px;
+//     }
+
+//     &__company-name-container {
+//       text-align: center;
+//       margin-top: 30px;
+//       cursor: pointer;
+//     }
+
+//     &__title {
+//       font-size: 24px;
+//       line-height: 28px;
+
+//       @if $isJobsCentral {
+//         color: #555;
+//       }
+//     }
+//   }
+// }
+
+// @media(min-width: 1024px) {
+//   .jobitem {
+//     &__summary {
+//       font-size: 16px;
+//     }
+
+//     &__time-location-position-type {
+//       float: none;
+//       line-height: 40px;
+
+//       &:first-child {
+//         margin-right: 0;
+//       }
+
+//       &-icon {
+//         padding-right: 5px;
+//       }
+//     }
+
+//     &__title {
+//       font-size: 30px;
+//       line-height: 36px;
+//       margin-bottom: 20px;
+//     }
+//   }
+// }
+
+// @media(min-width: $desktop-breakpoint) {
+//   .jobitem {
+//     &__summary {
+//       font-size: 20px;
+//     }
+//   }
+// }

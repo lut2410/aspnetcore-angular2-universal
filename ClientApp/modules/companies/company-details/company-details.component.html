@@ -1,0 +1,48 @@
+﻿<div class="microsite__header-container">
+    <div class="microsite__background hidden-xs" [style.background-image]="'url(' + company.banner + ')'"></div>
+    <div class="microsite__header-band">
+        <div class="container">
+            <div class="col-sm-4 col-md-3 microsite__logo" [style.background-image]="'url(' + company.logo + ')'"></div>
+            <div class="col-xs-12 col-sm-8 col-md-9 microsite__header-name-container">
+                <div class="microsite__header-name-container-wrapper">
+                    <span class="company__name col-xs-12">{{company.name}}</span>
+                    <span class="company__homepage-url col-xs-12"><a href="{{company.homePageUrl}}" target="_blank">{{companyWebsite}}</a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container company__information-body ">
+    <div class="company__information-container">
+        <h1 class="company__description-title">{{ "COMPANY.ABOUT_EMPLOYER" | translate }}</h1>
+        <div id="company-description-id" class="company__description-body" [innerHTML]="companyDescription"></div>
+    </div>
+</div>
+<div class="company__information-body-jobs">
+    <div class="container company__information-container">
+        <div>
+            <h1 class="company__description-title company__jobs-title">{{ "COMPANY.JOBS_TITLE" | translate }}</h1>
+            <span class="company__see-all-job-link" (click)="doSearch()" *ngIf="jobs.length > 5">See All Jobs</span>
+        </div>
+        <div id="job-list" class="col-xs-12 company__description-body">
+            <ul class="list-unstyled company__description-container">
+                <span *ngIf="isNoJob">{{ "JOB_SEARCH.NO_JOB" | translate }}</span>
+                <li *ngFor="let job of jobs; let i = index" class="joblist__item-wrapper">
+                    <div class="joblist__item" *ngIf="i < 5">
+                        <app-job-list-item [job]="job" [isHavingLogo]="false" [routerLink]="['/jobs', job.id, job.title | convertToMachineName: 5]"></app-job-list-item>
+                    </div>
+                </li>
+            </ul>
+            <span class="company__see-all-job-link" *ngIf="jobs.length > 5" [routerLink]="['/jobs']" (click)="doSearch()">See All Jobs</span>
+        </div>
+    </div>
+</div>
+<!--<div class="container company__information-body ">
+    <div class="company__information-container">
+        <h1 class="company__description-title">{{ "COMPANY.WHY_WORKING_HERE" | translate }}</h1>
+      <div id="company-description-id" class="company__description-container company__footer-container" [innerHTML]="company.footer"></div>
+      <div class="company__footer-images-container">
+        <div *ngFor="let img of company.footerImages" class="company__footer-image-item" [ngStyle]="{'background-image':'url(' + img + ')', 'height':company.footerImages.length > 1 ? '400px' : '300px' }"></div>
+      </div>
+    </div>
+</div>-->
