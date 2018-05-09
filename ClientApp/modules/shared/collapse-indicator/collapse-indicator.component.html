@@ -1,0 +1,7 @@
+<div class="collapsed"
+     id="indicator"
+     data-toggle="collapse"
+     [attr.data-target]="targetId" (click)="onClick()">
+    <div class="more" [hidden]="settings.isExpand">{{ "JOB_SEARCH.MORE_OPTIONS" | translate }}<span class="glyphicon glyphicon-triangle-bottom"></span></div>
+    <div class="fewer" [hidden]="!settings.isExpand">{{ "JOB_SEARCH.FEWER_OPTIONS" | translate }}<span class="glyphicon glyphicon-triangle-top"></span></div>
+</div>

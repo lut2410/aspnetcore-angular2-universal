@@ -1,0 +1,160 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "project": {
+    "name": "job-portal"
+  },
+  "apps": [
+    {
+      "name": "jobscentral",
+      "root": "ClientApp",
+      "outDir": "wwwroot",
+      "assets": [
+        "assets"
+      ],
+      "platform": "browser",
+      "index": "index.html",
+      "main": "main.browser.ts",
+      "polyfills": "polyfills.ts",
+      "test": "test.ts",
+      "tsconfig": "tsconfig.browser.json",
+      "testTsconfig": "tsconfig.spec.json",
+      "prefix": "app",
+      "styles": [
+        "styles.scss"
+      ],
+      "stylePreprocessorOptions": {
+        "includePaths": [
+          "",
+          "environments/jobscentral"
+        ]
+      },
+      "scripts": [
+        "../node_modules/jquery/dist/jquery.js",
+        "../node_modules/bootstrap/dist/js/bootstrap.js"
+      ],
+      "environmentSource": "environments/index.ts",
+      "environments": {
+        "dev": "environments/jobscentral/dev.ts",
+        "staging": "environments/jobscentral/staging.ts",
+        "prod": "environments/jobscentral/prod.ts",
+        "demo": "environments/jobscentral/demo.ts",
+        "systemtest": "environments/jobscentral/systemtest.ts",
+        "demowsg": "environments/jobscentral/demowsg.ts"
+      }
+    },
+    {
+      "name": "jobscentral-ssr",
+      "root": "ClientApp",
+      "outDir": "wwwroot/server",
+      "platform": "server",
+      "index": "index.html",
+      "main": "main.server.ts",
+      "tsconfig": "tsconfig.server.json",
+      "prefix": "app",
+      "stylePreprocessorOptions": {
+        "includePaths": [
+          "",
+          "environments/jobscentral"
+        ]
+      },
+      "environmentSource": "environments/index.ts",
+      "environments": {
+        "dev": "environments/jobscentral/dev.ts",
+        "staging": "environments/jobscentral/staging.ts",
+        "prod": "environments/jobscentral/prod.ts",
+        "demo": "environments/jobscentral/demo.ts",
+        "systemtest": "environments/jobscentral/systemtest.ts",
+        "demowsg": "environments/jobscentral/demowsg.ts"
+      }
+    },
+    {
+      "name": "talentcorp",
+      "root": "ClientApp",
+      "outDir": "wwwroot",
+      "assets": [
+        "assets"
+      ],
+      "index": "./index.html",
+      "main": "main.browser.ts",
+      "polyfills": "polyfills.ts",
+      "test": "test.ts",
+      "tsconfig": "tsconfig.browser.json",
+      "testTsconfig": "tsconfig.spec.json",
+      "prefix": "app",
+      "styles": [
+        "styles.scss"
+      ],
+      "stylePreprocessorOptions": {
+        "includePaths": [
+          "",
+          "environments/talentcorp"
+        ]
+      },
+      "scripts": [
+        "../node_modules/jquery/dist/jquery.js",
+        "../node_modules/bootstrap/dist/js/bootstrap.js"
+      ],
+      "environmentSource": "environments/index.ts",
+      "environments": {
+        "dev": "environments/talentcorp/dev.ts",
+        "staging": "environments/talentcorp/staging.ts",
+        "prod": "environments/talentcorp/prod.ts",
+        "demo": "environments/talentcorp/demo.ts",
+        "systemtest": "environments/talentcorp/systemtest.ts"
+      }
+    },
+    {
+      "name": "talentcorp-ssr",
+      "root": "ClientApp",
+      "outDir": "wwwroot/server",
+      "platform": "server",
+      "index": "index.html",
+      "main": "main.server.ts",
+      "tsconfig": "tsconfig.server.json",
+      "prefix": "app",
+      "stylePreprocessorOptions": {
+        "includePaths": [
+          "",
+          "environments/talentcorp"
+        ]
+      },
+      "environmentSource": "environments/index.ts",
+      "environments": {
+        "dev": "environments/talentcorp/dev.ts",
+        "staging": "environments/talentcorp/staging.ts",
+        "prod": "environments/talentcorp/prod.ts",
+        "demo": "environments/talentcorp/demo.ts",
+        "systemtest": "environments/talentcorp/systemtest.ts"
+      }
+    }
+  ],
+  "e2e": {
+    "protractor": {
+      "config": "./protractor.conf.js"
+    }
+  },
+  "lint": [
+    {
+      "project": "ClientApp/tsconfig.browser.json"
+    },
+    {
+      "project": "ClientApp/tsconfig.spec.json"
+    },
+    {
+      "project": "e2e/tsconfig.e2e.json"
+    }
+  ],
+  "test": {
+    "karma": {
+      "config": "./karma.conf.js"
+    }
+  },
+  "defaults": {
+    "styleExt": "scss",
+    "component": {
+    },
+    "serve": {
+      "port": 44447
+    }
+  }
+}

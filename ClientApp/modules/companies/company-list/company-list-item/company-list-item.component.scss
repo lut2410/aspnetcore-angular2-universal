@@ -1,0 +1,67 @@
+// @import 'variables';
+
+// .company {
+//     text-align: center;
+//     font-size: 16px;
+//     height: 350px;
+//     cursor: pointer;
+//     display: block;
+
+//     &__logo-container {
+//         height: 150px;
+//         padding: 10px 15px;
+
+//         a {
+//             display: block;
+//             height: 100%;
+//             background-repeat: no-repeat;
+//             background-size: contain;
+//             background-position: center center;
+//             cursor: pointer;
+//         }
+//     }
+
+//     &__title {
+//         font-size: 20px;
+//         font-weight: bold;
+//         line-height: 24px;
+//         color: #555555;
+//         height: 50px;
+//         display: flex;
+
+//         &-inner {
+//             align-self: center;
+//             margin: 0 auto;
+//         }
+//     }
+
+//     &__location,
+//     &__job-nums {
+//         &--number-color {
+//             @if $isJobsCentral { color: #f26522; }
+//             @if $isTalentCorp { color: #ff9a00; }
+//         }
+//     }
+
+//     &__job-buttons {
+//         font-weight: bold;
+//         @if $isJobsCentral { color: #f26522; }
+//         @if $isTalentCorp { color: #ff9a00; }
+//         text-transform: uppercase;
+
+//         a {
+//             @if $isJobsCentral { color: #f26522; }
+//             @if $isTalentCorp { color: #ff9a00; }
+//             cursor: pointer;
+//         }
+
+//         span:nth-child(2) {
+//             color: #e5e5e5;
+//             font-size: 16px;
+//         }
+//     }
+
+//     > div {
+//         margin-bottom: 10px;
+//     }
+// }

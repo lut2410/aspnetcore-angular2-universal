@@ -1,0 +1,244 @@
+﻿// @import "variables";
+// $main-navigation-height: 80px;
+
+// .navigation-wrapper {
+//   @if $isJobsCentral {
+//     float: right;
+//   }
+// }
+
+// .main-navigation {
+//   @if $isJobsCentral {
+//     background-color: #fff;
+//   }
+
+//   @if $isTalentCorp {
+//     background-color: #383838;
+//   }
+
+//   @if $isTalentCorp {
+//     line-height: $main-navigation-height;
+//   }
+
+//   height: $main-navigation-height;
+//   padding-left: 30px;
+//   padding-right: 30px;
+
+//   & > div {
+//     position: relative;
+//   }
+
+//   &__logo {
+//     height: $main-navigation-height;
+//     left: 0;
+//     max-width: 250px;
+//     position: absolute;
+//     padding-left: 0;
+
+//     @if $isTalentCorp {
+//       a {
+//         display: block;
+//       }
+//     }
+
+//     img {
+//       @if $isJobsCentral {
+//         width: 100%;
+//         margin-top: 5px;
+//       }
+
+//       @if $isTalentCorp {
+//         width: 142px;
+//       }
+//     }
+//   }
+
+// }
+
+// @media(min-width: $mobile-vertical-breakpoint) {
+//   .main-navigation {
+//     @if $isJobsCentral {
+//       background-color: #fff;
+//     }
+
+//     @if $isTalentCorp {
+//       background-color: #383838;
+//     }
+
+//     @if $isTalentCorp {
+//       line-height: calc($main-navigation-height - 30px);
+//     }
+
+//     height: calc($main-navigation-height - 30px);
+//     padding: 0;
+
+//     &__logo {
+//       padding-left: 15px;
+//       z-index: 1;
+
+//       a {
+//         line-height: 21px;
+
+//         img {
+//           @if $isJobsCentral {
+//             width: 240px;
+//           }
+
+//           @if $isTalentCorp {
+//             width: 100px;
+//           }
+//         }
+//       }
+//     }
+
+//     & > div {
+//       position: relative;
+//     }
+
+//     &__logo {
+//       height: calc($main-navigation-height - 30px);
+//       left: 0;
+//       max-width: 50%;
+//       position: absolute;
+
+//       img {
+//         width: 100%;
+//       }
+//     }
+
+//   }
+
+//   .slider.home-carousel {
+//     @if $isJobsCentral {
+//       position: absolute;
+//       top: 0;
+//     }
+//   }
+// }
+
+// @media(min-width: $tablet-vertical-breakpoint) {
+//   .main-navigation {
+//     @if $isJobsCentral {
+//       background-color: #fff;
+//     }
+
+//     @if $isTalentCorp {
+//       background-color: #383838;
+//     }
+
+//     @if $isTalentCorp {
+//       line-height: calc($main-navigation-height - 10px);
+//     }
+
+//     height: calc($main-navigation-height - 10px);
+//     padding: 0;
+
+//     &__logo {
+//       padding-left: 30px;
+
+//       a {
+//         line-height: 21px;
+
+//         img {
+//           @if $isJobsCentral {
+//             width: 240px;
+//           }
+
+//           @if $isTalentCorp {
+//             width: 170px;
+//           }
+//         }
+//       }
+//     }
+
+//     & > div {
+//       position: relative;
+//     }
+
+//     &__logo {
+//       height: calc($main-navigation-height - 10px);
+//       left: 0;
+//       max-width: 50%;
+//       position: absolute;
+
+//       img {
+//         width: 100%;
+//       }
+//     }
+
+//   }
+
+// }
+
+// @media(min-width: $tablet-horizontal-breakpoint) {
+//   .main-navigation {
+//     @if $isJobsCentral {
+//       background-color: #fff;
+//     }
+
+//     @if $isTalentCorp {
+//       background-color: #383838;
+//     }
+
+//     @if $isTalentCorp {
+//       line-height: $main-navigation-height;
+//     }
+
+//     height: $main-navigation-height;
+//     padding-left: 30px;
+//     padding-right: 30px;
+
+//     &.home {
+//       @if $isTalentCorp {
+//         background-color: rgba(0,0,0,0);
+//       }
+//     }
+
+//     &__logo {
+//       padding-left: 0;
+
+//       @if $isJobsCentral {
+//         img {
+//           width: 80%;
+//         }
+//       }
+
+//       @if $isTalentCorp {
+//         a {
+//           img {
+//             width: 162px;
+//           }
+//         }
+//       }
+//     }
+
+//   }
+// }
+
+// @media(min-width: $desktop-breakpoint) {
+//   .main-navigation {
+//     &__logo {
+//       @if $isJobsCentral {
+//         a {
+//           img {
+//             width: 240px;
+//           }
+//         }
+//       }
+
+//       @if $isTalentCorp {
+//         a {
+//           img {
+//             width: 190px;
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+
+//   .job-navigation ul li {
+//       @if $isJobsCentral {
+//         border-right: solid 1px #555555;
+//       }
+//   }

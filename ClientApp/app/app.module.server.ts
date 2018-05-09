@@ -3,7 +3,7 @@ import { ServerModule } from '@angular/platform-server';
 import { BrowserModule } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-import { AppModuleShared } from './app.module';
+import { AppModule } from './app.module';
 import { AppComponent } from './app.component';
 import { ServerTransferStateModule } from '@angular/platform-server';
 
@@ -13,7 +13,7 @@ import { ServerPrebootModule } from 'preboot/server';
   bootstrap: [AppComponent],
   imports: [
     // Our Common AppModule
-    AppModuleShared,
+    AppModule,
 
     ServerModule,
     ServerPrebootModule.recordEvents({ appRoot: 'app-root' }),
@@ -25,7 +25,7 @@ import { ServerPrebootModule } from 'preboot/server';
     // ServerTransferStateModule // <-- broken for the time-being with ASP.NET
   ]
 })
-export class AppModule {
+export class AppModuleServer {
 
   constructor() { }
 

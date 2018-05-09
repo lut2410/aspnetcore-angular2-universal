@@ -1,0 +1,4 @@
+  <div class="radio-item" *ngFor="let option of options" (click)="onSelectOption(option.id)" class="row radio-item">
+    <span class="radio-item__icon" [ngClass]="option.id == model ? 'radio-item__icon--active' :
+     'radio-item__icon--deactive'"></span>{{ option.name | translate}}
+  </div>

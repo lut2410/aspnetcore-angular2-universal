@@ -4,7 +4,7 @@ import { APP_BASE_HREF } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ORIGIN_URL, REQUEST } from '@nguniversal/aspnetcore-engine/tokens';
-import { AppModuleShared } from './app.module';
+import { AppModule } from './app.module';
 import { AppComponent } from './app.component';
 import { BrowserTransferStateModule } from '@angular/platform-browser';
 import { BrowserPrebootModule } from 'preboot/browser';
@@ -25,7 +25,7 @@ export function getRequest() {
         BrowserAnimationsModule,
 
         // Our Common AppModule
-        AppModuleShared
+        AppModule
 
     ],
     providers: [
@@ -41,4 +41,4 @@ export function getRequest() {
         }
     ]
 })
-export class AppModule { }
+export class AppModuleBrowser { }

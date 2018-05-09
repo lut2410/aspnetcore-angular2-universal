@@ -1,0 +1,42 @@
+﻿<div class="row">
+  <a [routerLink]="jobLink" class="col-xs-4 col-sm-4 col-md-3" *ngIf="isHavingLogo">
+    <div class="jobitem_company-logo-container">
+      <img title="{{job.companyName}}" class="jobitem_company-logo" src="{{getCompanyLogo(job.companyLogo)}}" />
+    </div>
+    <div class="jobitem__company-name-container">
+      {{job.companyName}}
+    </div>
+  </a>
+  <a [routerLink]="jobLink" [ngClass]="{'col-xs-12 col-sm-12 col-md-10': !(isHavingLogo), 'col-xs-8 col-sm-8 col-md-7': (isHavingLogo)}">
+    <div class="jobitem__title">{{job.title}}</div>
+    <div class="jobitem__summary hidden-sm hidden-md hidden-lg">{{job.companyName}}</div>
+    <div class="jobitem__summary hidden-xs" [innerHTML]="getSummary(job)"></div>
+  </a>
+  <div class="pull-right col-md-2" [ngClass]="{'col-xs-12 col-sm-7 pull-left': !(isHavingLogo), 'col-xs-8 col-sm-8': (isHavingLogo)}">
+    <div class="jobitem__time-location-position-type row col-sm-6 col-md-12">
+      <img class="jobitem__time-location-position-type-icon" src="{{timeIconSource}}" />
+      <span class="jobitem__time-location-position-type-text">{{ getPeriodTimeFromPublishDate(job.publishDate) }}</span>
+    </div>
+    <div class="jobitem__time-location-position-type row col-sm-6 col-md-12">
+      <img class="jobitem__time-location-position-type-icon" src="{{locationIconSource}}" />
+      <span class="jobitem__time-location-position-type-text">{{ job.location }}</span>
+    </div>
+    <div class="jobitem__time-location-position-type row col-sm-6 col-md-12" *ngIf="isJobsCentral">
+      <img class="jobitem__time-location-position-type-icon" src="{{positionIconSource}}" />
+      <span class="jobitem__time-location-position-type-text">{{getProfessionalLevel(job.professionalLevel)}}</span>
+    </div>
+    <div class="hidden-xs jobitem__time-location-position-type row col-sm-6 col-md-12" *ngIf="!isJobsCentral">
+      <img class="jobitem__time-location-position-type-icon" src="{{positionIconSource}}" />
+      <span class="jobitem__time-location-position-type-text">{{getProfessionalLevel(job.professionalLevel)}}</span>
+    </div>
+    <div class="jobitem__time-location-position-type row col-sm-6 col-md-12" *ngIf="isJobsCentral">
+      <img class="jobitem__time-location-position-type-icon" src="{{typeIconSource}}" />
+      <span class="jobitem__time-location-position-type-text">{{getExtentOfWorkName(job.extentOfWork)}}</span>
+    </div>
+    <div class="hidden-xs jobitem__time-location-position-type row col-sm-6 col-md-12" *ngIf="!isJobsCentral">
+      <img class="jobitem__time-location-position-type-icon" src="{{typeIconSource}}" />
+      <span class="jobitem__time-location-position-type-text">{{getExtentOfWorkName(job.extentOfWork)}}</span>
+    </div>
+    <a [routerLink]="jobLink" class="btn btn-primary hidden-xs hidden-sm jobitem__custom-apply">{{ "JOB.READ_APPLY" | translate }}</a>
+  </div>
+</div>

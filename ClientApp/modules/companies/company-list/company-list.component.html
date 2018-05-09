@@ -1,0 +1,24 @@
+<div class="search" id="search-company">
+    <app-company-search-box (onSearch)="onSearch()"></app-company-search-box>
+</div>
+
+<div class="container company-list">
+    <div>
+        <div class="company-list__total-companies">
+            <span class="company-list__total-number">{{companyTotal}}</span>
+            <span class="company-list__total-unit" *ngIf="companyTotal > 1">&nbsp;{{ "COMPANY_SEARCH.COMPANIES_MATCHED" | translate }}</span>
+            <span class="company-list__total-unit" *ngIf="companyTotal < 2">&nbsp;{{ "COMPANY_SEARCH.NO_COMPANY_MATCHED" | translate }}&nbsp; {{ "JOB_SEARCH.NO_DATA" | translate }}</span>
+        </div>
+
+
+        <div class="company-list__list-item" *ngIf="companyTotal > 0">
+            <div class="row">
+                <div *ngFor="let company of companies" class="col-md-3 col-xs-12 col-sm-6">
+                    <div class="company-list__item">
+                        <app-company-list-item [company]="company" (navigate)="onNavigate($event)"></app-company-list-item>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

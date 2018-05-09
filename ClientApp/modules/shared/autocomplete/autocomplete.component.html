@@ -1,0 +1,18 @@
+<div class="autocomplete" (focusout)="onBlur()">
+    <input class="autocomplete__input" [(ngModel)]="_searchString" autocomplete="off"
+           (keyup)="keyupHandler($event)" placeholder="{{ param.placeholder | translate }}" (keydown)="keydownHandler($event)"
+           autocorrect="off" autocapitalize="off" (focus)="onFocus()" name="searchValue" />
+    <div class="autocomplete__dropdown-holder" *ngIf="isInitialized && _searchString && (!_results || _results.length > 0)">
+        <div class="autocomplete__dropdown">
+            <div *ngIf="searchActive && displaySearching" class="autocomplete__searching">...</div>
+            <div class="autocomplete__row-wrapper" *ngFor="let item of _results; let i = index; let currentIdex = index">
+                <span class="autocomplete__category "
+                      *ngIf="canShowCategory(_results, item, i)">{{ item.category }}</span>
+                <div class="autocomplete__row" (click)="selectItem(item.title, currentIdex)" [ngClass]="currentHoverItem(currentIdex)">
+                    <div class="autocomplete__item-text" [innerHTML]="item.title">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

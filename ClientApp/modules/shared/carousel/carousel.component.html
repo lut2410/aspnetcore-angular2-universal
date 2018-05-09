@@ -1,0 +1,4 @@
+<ul class="slider">
+    <li *ngFor="let imageUrl of imageList; let i = index;" [ngStyle]="{'background-image': 'url(' + imageUrl + ')'}" [class.active]="i == 0"></li>
+</ul>
+

@@ -1,0 +1,23 @@
+<div>
+  <a [routerLink]="companyLink"
+     class="company">
+    <div class="company__logo-container col-xs-12">
+      <a [style.background-image]="'url(' + company.logo + ')'"></a>
+    </div>
+    <div class="company__title col-xs-12">
+      <div class="company__title-inner"
+           [innerHtml]="company.name | teaserText: 40 : true : ''"></div>
+    </div>
+    <div class="company__location col-xs-12">
+      <div [innerHtml]="local"></div>
+    </div>
+    <div class="company__job-nums col-xs-12">
+      <span *ngIf="company.jobNumber === 0">{{"COMPANY.NO" | translate}} {{"COMPANY.CURRENT_JOBS" | translate}}</span>
+      <span *ngIf="company.jobNumber === 1"><span class="company__job-nums--number-color">{{company.jobNumber}}</span> {{"COMPANY.CURRENT_JOB" | translate}}</span>
+      <span *ngIf="company.jobNumber > 1"><span class="company__job-nums--number-color">{{company.jobNumber}}</span> {{"COMPANY.CURRENT_JOBS" | translate}}</span>
+    </div>
+    <div class="company__job-buttons col-xs-12">
+      <span><a>{{ "COMPANY.READ_APPLY" | translate }}</a></span>
+    </div>
+  </a>
+</div>

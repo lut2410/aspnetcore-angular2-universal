@@ -1,0 +1,23 @@
+﻿<div class="salary dropdown">
+    <div *ngIf="!isMobile || isTablet" class="salary__sum collapsed dropdown-toggle" data-toggle="dropdown">
+        <span class="caret"></span>
+        <input class="salary__sum-input" type="text" [value]="salary.sum" />
+    </div>
+    <div id="salary-container" class="dropdown-menu" [class.in]="isMobile && !isTablet">
+        <img src="../../../assets/icons/arrow_up_select_box.png" class="arrow_up_select" />
+        <div id="salary-container-content">
+            <ul class="salary__type" (click)="changeSalaryType($event)" [class.nego]="salary.negotiable">
+                <li data-toggle="tab" class="active">{{ "JOB_SEARCH.MONTHLY" | translate }}</li>
+                <li data-toggle="tab">{{ "JOB_SEARCH.HOURLY" | translate }}</li>
+            </ul>
+            <div class="salary__nego">
+                <input type="checkbox" name="nego" [ngModel]="salary.negotiable" (ngModelChange)="changeSalaryNego($event)"><div class="salary__nego-label">{{ "JOB_SEARCH.NEGOTIABLE" | translate }}</div>
+            </div>
+            <div class="salary__value">
+                <span>From</span>
+                <input [disabled]="salary.negotiable" class="salary__value-input" type="number" min="0" placeholder="0"
+                        [(ngModel)]="salary.num" (ngModelChange)="changeSalaryNum($event)" />
+            </div>
+        </div>
+    </div>
+</div>

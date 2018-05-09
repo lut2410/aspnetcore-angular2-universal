@@ -1,0 +1,93 @@
+﻿<div class="main-job-navigation">
+  <nav class="navbar navbar-default hidden-md hidden-lg" role="navigation">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-controls="navbar">
+      <div class="button-open">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </div>
+      <div class="button-close">
+        <img src="{{btnCloseIconSrc}}" />
+      </div>
+    </button>
+      <a class="navbar-brand" href=""></a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse job-navigation" style="height: 1px;">
+      <ul>
+        <li><a [routerLink]="jobPortalRelativeLinks.jobs" (click)="hideMenu()" [routerLinkActive]="['active']">{{ mainMenuBaseStringList.jobSearch }}</a></li>
+        <li *ngIf="userInfo.isAuthenticated && !isJobsCentral"><a [routerLink]="jobPortalRelativeLinks.favouriteJobs" (click)="hideMenu()">{{ mainMenuBaseStringList.favouriteJobs }}</a></li>
+        <li><a [routerLink]="jobPortalRelativeLinks.companies" (click)="hideMenu()" [routerLinkActive]="['active']">{{ mainMenuBaseStringList.browseCompanies }}</a></li>
+        <li *ngIf="!userInfo.isAuthenticated"><a [routerLink]="jobPortalRelativeLinks.jobSeekers" [routerLinkActive]="['active']">{{ isTalentCorp ? mainMenuBaseStringList.forCandidates : mainMenuBaseStringList.forJobseekers }}</a></li>
+        <li *ngIf="!userInfo.isAuthenticated"><a [routerLink]="jobPortalRelativeLinks.employers" [routerLinkActive]="['active']">{{ isTalentCorp ? mainMenuBaseStringList.forCompanies : mainMenuBaseStringList.forEmployers }}</a></li>
+        <li *ngIf="userInfo.isAuthenticated && !isJobsCentral"><a [href]="referenceLinks.candidateAppMyApplications">{{ mainMenuBaseStringList.myApplication }}</a></li>
+        <li *ngIf="userInfo.isAuthenticated && !isJobsCentral"><a [href]="referenceLinks.candidateAppMyCalendar">{{ mainMenuBaseStringList.myCalendar }}</a></li>
+        <li *ngIf="userInfo.isAuthenticated && !isJobsCentral"><a [href]="referenceLinks.candidateAppMyCv">{{ mainMenuBaseStringList.myCV }}</a></li>
+        <!--<li class="has-child collapsed job-navigation--for-jobseekers">
+         <a>{{ mainMenuBaseStringList.forJobseekers }}</a>
+          <span class="glyphicon glyphicon-menu-down"></span>
+          <ul id="jobseekers-infor" class="collapse" aria-expanded="false">
+            <li><a [routerLink]="jobPortalRelativeLinks.jobs">{{ mainMenuBaseStringList.forJobseekersArticles }}</a></li>
+            <li><a [routerLink]="jobPortalRelativeLinks.jobs">{{ mainMenuBaseStringList.forJobseekersEvents }}</a></li>
+          </ul>
+        </li>
+        <li class="job-navigation--malaysia-100"><a data-toggle="collapse" data-target="#navbar">{{ mainMenuBaseStringList.malaysia100 }}</a></li>-->
+      </ul>
+      <div *ngIf="userInfo.isAuthenticated" class="account-navigation">
+        <div class="account-navigation-logged-in account-navigation-wrapper">
+          <div class="account-navigation-logged-in__user"><a [href]="referenceLinks.candidateAppMyCv">{{userInfo.fullname}}</a></div>
+          <i class="glyphicon glyphicon-triangle-bottom hidden-sm hidden-xs" data-toggle="dropdown" *ngIf="isJobsCentral"></i>
+          <ul class="dropdown-menu">
+            <li><a [href]="referenceLinks.candidateAppMyCv">{{ mainMenuBaseStringList.viewProfile }}</a></li>
+            <li><a (click)="editProfile()">{{ mainMenuBaseStringList.editAccountInfo }}</a></li>
+            <li><a (click)="logOut()">{{ mainMenuBaseStringList.sighOut }}</a></li>
+          </ul>
+          <div class="account-navigation-logged-in hidden-lg hidden-md" *ngIf="isJobsCentral"><a [href]="referenceLinks.candidateAppMyCv">{{ subMenuBaseStringList.dashboard }}</a></div>
+          <div class="account-navigation-logged-in hidden-lg hidden-md" *ngIf="isJobsCentral" [routerLinkActive]="['active']"><a [href]="jobPortalRelativeLinks.favouriteJobs">{{ subMenuBaseStringList.savedJobs }}</a></div>
+          <div class="account-navigation-logged-in hidden-lg hidden-md" *ngIf="isJobsCentral"><a [href]="referenceLinks.candidateAppMyApplications">{{ subMenuBaseStringList.appliedJobs }}</a></div>
+          <div class="account-navigation-logged-in hidden-lg hidden-md" *ngIf="isJobsCentral"><a [href]="referenceLinks.candidateAppMyCalendar">{{ subMenuBaseStringList.interviews }}</a></div>
+          <div class="account-navigation-logged-in hidden-lg hidden-md" *ngIf="isJobsCentral"><a (click)="editProfile()">{{ mainMenuBaseStringList.editAccountInfo }}</a></div>
+          <div class="account-navigation-logged-in hidden-lg hidden-md" *ngIf="isJobsCentral"><a (click)="logOut()">{{ mainMenuBaseStringList.sighOut }}</a></div>
+          <div class="account-navigation-logged-in__edit-profile user-icon" *ngIf="isTalentCorp"><a (click)="editProfile()">{{ mainMenuBaseStringList.myProfile }}</a></div>
+          <div class="account-navigation-logged-in__logout user-icon" *ngIf="isTalentCorp"><a (click)="logOut()">{{ mainMenuBaseStringList.logout }}</a></div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="job-navigation hidden-xs hidden-sm" aria-expanded="false">
+    <ul>
+      <li>
+        <a [routerLink]="jobPortalRelativeLinks.jobs" *ngIf="!isJobsCentral">{{ mainMenuBaseStringList.jobs }}</a>
+        <a [routerLink]="jobPortalRelativeLinks.jobs" *ngIf="isJobsCentral" [routerLinkActive]="['active']">{{ mainMenuBaseStringList.jobSearch }}</a>
+      </li>
+      <li *ngIf="userInfo.isAuthenticated && !isJobsCentral"><a [routerLink]="jobPortalRelativeLinks.favouriteJobs" (click)="hideMenu()">{{ mainMenuBaseStringList.favouriteJobs }}</a></li>
+      <li><a [routerLink]="jobPortalRelativeLinks.companies" [routerLinkActive]="['active']">{{ mainMenuBaseStringList.browseCompanies }}</a></li>
+      <li *ngIf="!userInfo.isAuthenticated"><a [routerLink]="jobPortalRelativeLinks.jobSeekers" [routerLinkActive]="['active']">{{ isTalentCorp ? mainMenuBaseStringList.forCandidates : mainMenuBaseStringList.forJobseekers }}</a></li>
+      <li *ngIf="!userInfo.isAuthenticated"><a [routerLink]="jobPortalRelativeLinks.employers" [routerLinkActive]="['active']">{{ isTalentCorp ? mainMenuBaseStringList.forCompanies : mainMenuBaseStringList.forEmployers }}</a></li>
+      <li *ngIf="userInfo.isAuthenticated && !isJobsCentral"><a [href]="referenceLinks.candidateAppMyApplications">{{ mainMenuBaseStringList.myApplication }}</a></li>
+      <li *ngIf="userInfo.isAuthenticated && !isJobsCentral"><a [href]="referenceLinks.candidateAppMyCalendar">{{ mainMenuBaseStringList.myCalendar }}</a></li>
+      <li *ngIf="userInfo.isAuthenticated && !isJobsCentral"><a [href]="referenceLinks.candidateAppMyCv">{{ mainMenuBaseStringList.myCV }}</a></li>
+    </ul>
+  </div>
+</div>
+<div class="main-account-navigation hidden-xs hidden-sm">
+  <div *ngIf="userInfo.isAuthenticated" class="account-navigation">
+    <div class="account-navigation-logged-in account-navigation-wrapper">
+      <div class="account-navigation-logged-in__user"><a [href]="referenceLinks.candidateAppMyCv">{{userInfo.fullname}}</a></div>
+      <i class="glyphicon glyphicon-triangle-bottom hidden-sm hidden-xs" data-toggle="dropdown" *ngIf="isJobsCentral"></i>
+      <ul class="dropdown-menu">
+        <li><a [href]="referenceLinks.candidateAppMyCv">{{ mainMenuBaseStringList.viewProfile }}</a></li>
+        <li><a (click)="editProfile()">{{ mainMenuBaseStringList.editAccountInfo }}</a></li>
+        <li><a (click)="logOut()">{{ mainMenuBaseStringList.sighOut }}</a></li>
+      </ul>
+      <div class="account-navigation-logged-in hidden-lg hidden-md" *ngIf="isJobsCentral"><a [href]="referenceLinks.candidateAppMyCv">{{ subMenuBaseStringList.dashboard }}</a></div>
+      <div class="account-navigation-logged-in hidden-lg hidden-md" *ngIf="isJobsCentral" [routerLinkActive]="['active']"><a [href]="jobPortalRelativeLinks.favouriteJobs">{{ subMenuBaseStringList.savedJobs }}</a></div>
+      <div class="account-navigation-logged-in hidden-lg hidden-md" *ngIf="isJobsCentral"><a [href]="referenceLinks.candidateAppMyApplications">{{ subMenuBaseStringList.appliedJobs }}</a></div>
+      <div class="account-navigation-logged-in hidden-lg hidden-md" *ngIf="isJobsCentral"><a [href]="referenceLinks.candidateAppMyCalendar">{{ subMenuBaseStringList.interviews }}</a></div>
+      <div class="account-navigation-logged-in hidden-lg hidden-md" *ngIf="isJobsCentral"><a (click)="editProfile()">{{ mainMenuBaseStringList.editAccountInfo }}</a></div>
+      <div class="account-navigation-logged-in hidden-lg hidden-md" *ngIf="isJobsCentral"><a (click)="logOut()">{{ mainMenuBaseStringList.sighOut }}</a></div>
+      <div class="account-navigation-logged-in__edit-profile user-icon" *ngIf="isTalentCorp"><a (click)="editProfile()">{{ mainMenuBaseStringList.myProfile }}</a></div>
+      <div class="account-navigation-logged-in__logout user-icon" *ngIf="isTalentCorp"><a (click)="logOut()">{{ mainMenuBaseStringList.logout }}</a></div>
+    </div>
+  </div>
+</div>
